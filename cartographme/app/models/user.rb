@@ -1,2 +1,13 @@
 class User < ActiveRecord::Base
+    create_table :users, force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.string   "home_city"
+    t.string   "recommended_places"
+    t.string   "places_visited"
+    t.string   "following"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
