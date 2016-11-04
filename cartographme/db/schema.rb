@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024035257) do
+ActiveRecord::Schema.define(version: 20161104034820) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string "city_name"
+    t.string "key_locations"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "user_id"
+  end
+
+  create_table "key_locations", force: :cascade do |t|
+    t.string "lat"
+    t.string "lng"
+    t.string "location_name"
+    t.string "key_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -21,20 +37,10 @@ ActiveRecord::Schema.define(version: 20161024035257) do
     t.string   "recommended_places"
     t.string   "places_visited"
     t.string   "following"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "key_locations", force: :cascade do |t|
-    t.string   "lat"
-    t.string   "lng"
-    t.string   "location_name"
-    t.string   "key_id"
-  end
-  
-  create_table "cities", force: :cascade do |t|
-    t.string   "city_name"
-    t.string   "key_locations"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "session_token"
+    t.string   "password_digest"
   end
 
 end
