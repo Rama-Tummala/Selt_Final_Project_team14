@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-key_locations = key_location.create([
+key_locations = key_locations.create([
       {
         lat: '41.659763', 
         lng: '-91.532282',
