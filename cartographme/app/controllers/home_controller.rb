@@ -2,15 +2,6 @@
 class HomeController < ApplicationController
   def index
     #adds test locations to all Markers will be from locations db when done
-  
-    testContent = "
-    <div id='content'>
-      <p>Englert Civic Theatre</p>
-      <form method='get' action='/home/index' class='button_to'>
-        <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
-        <input value='TEST Button' type='submit' />
-      </form>
-    </div>"
     
     #<%= button_to 'Index', home_index_path %>"
     # @allMarkers = [
@@ -47,6 +38,23 @@ class HomeController < ApplicationController
     # ]
     # gon.allMarkers = @allMarkers
     @allMarkers = Key_Location.all
+  
+    @allMarkers.each|loc|do
+      info_content = "
+      <div id='content'>
+        <p></p>
+        <form method='get' action='/home/index' class='button_to'>
+          <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
+          <input value='Mark as visited.' type='submit' />
+        </form>
+      </div>"
+      #marker["infowindow"] = info_content;
+    end
+    
+   
+    
+    
+    @allMarkers.each() do
     gon.allMarkers = @allMarkers
   end
   
