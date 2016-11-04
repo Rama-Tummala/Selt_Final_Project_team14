@@ -29,9 +29,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'gmaps4rails'
 #used to send data from controllers to js scripts
 gem 'gon'
+#used to manage env variables for api keys and heroku
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

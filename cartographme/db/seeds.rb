@@ -5,13 +5,47 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(username: 'Nhan', password:"")
-User.create(username: 'Nhan Tran', password:"")
-User.create(username: 'Nhan Tran-Phan', password:"")
-User.create(username: 'James', password:"")
-User.create(username: 'Josh', password:"")
-User.create(username: 'Jake', password:"")
-User.create(username: 'Ramadevi', password:"")
-User.create(username: 'Ash', password:"")
-User.create(username: 'Ashlyn', password:"")
-User.create(username: 'Ashley', password:"")
+
+
+key_locations = Key_Location.create([
+      {
+        lat: '41.659763', 
+        lng: '-91.532282',
+        name: 'Englert Civic Theatre'
+      },
+      {
+        lat: '41.661291',
+        lng: '-91.536145',
+        name: "Old Capitol Museum."
+      },
+      {
+        lat: '41.658718',
+        lng: '-91.551107',
+        name: "Kinnick Stadium."
+      },
+      {
+        lat: '41.659401',
+        lng: '-91.526448',
+        name: "College Green Park."
+      },
+      {
+        lat: '41.663622',
+        lng: '-91.530299',
+        name: "The Bluebird Diner."
+      },
+      {
+        lat: '41.666768',
+        lng: '-91.527106',
+        name: "North Market Park."
+      }
+    ])
+User.create(name: 'Nhan', password:"")
+User.create(name: 'Nhan Tran', password:"")
+User.create(name: 'Nhan Tran-Phan', password:"")
+User.create(name: 'James', password:"")
+User.create(name: 'Josh', password:"")
+User.create(name: 'Jake', password:"")
+User.create(name: 'Ramadevi', password:"")
+User.create(name: 'Ash', password:"")
+User.create(name: 'Ashlyn', password:"")
+User.create(name: 'Ashley', password:"")
