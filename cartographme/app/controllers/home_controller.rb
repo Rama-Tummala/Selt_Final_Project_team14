@@ -2,11 +2,22 @@
 class HomeController < ApplicationController
   def index
     #adds test locations to all Markers will be from locations db when done
+  
+    testContent = "
+    <div id='content'>
+      <p>Englert Civic Theatre</p>
+      <form method='get' action='/home/index' class='button_to'>
+        <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
+        <input value='TEST Button' type='submit' />
+      </form>
+    </div>"
+    
+    #<%= button_to 'Index', home_index_path %>"
     @allMarkers = [
       {
         "lat" => 41.659763, 
         "lng" => -91.532282,
-        "infowindow" => "Englert Civic Theatre."
+        "infowindow" => testContent
       },
       {
         "lat" => 41.661291,
