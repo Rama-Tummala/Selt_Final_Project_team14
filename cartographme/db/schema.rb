@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20161104201552) do
-
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
     t.string "key_locations"
