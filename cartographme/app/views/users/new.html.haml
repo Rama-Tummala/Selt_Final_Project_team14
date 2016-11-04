@@ -1,3 +1,25 @@
-%h1 New User
-= render 'form'
-= link_to 'Back', users_path
+%p.login= link_to 'Log-in to Rotten Potatoes', login_path
+
+%h1 Sign-up 
+
+-unless @user ==nil
+  -if @user.errors.any?
+    %ul
+    -@user.errors.full_messages.each do |msg|
+      %li #{msg}
+
+= form_tag users_path, :id=>'signup_form', :method=> 'post' do
+
+  = label :user, :name, 'Name'
+  = text_field :user, 'name'
+
+  = label :user, :email, 'Email'
+  = text_field :user, 'email'
+
+  = label :user, :password, 'Password'
+  = password_field :user, 'password'
+
+  = label :user, :password_confirmation, 'Password_confirmation'
+  = password_field :user, 'password_confirmation'
+
+  = submit_tag 'Create my account'

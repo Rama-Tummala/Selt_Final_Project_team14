@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161102215117) do
-=======
-ActiveRecord::Schema.define(version: 20161104201552) do
->>>>>>> jake1
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -42,6 +38,8 @@ ActiveRecord::Schema.define(version: 20161104201552) do
     t.string   "following"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "session_token"
+    t.string   "password_digest"
   end
 
 end
