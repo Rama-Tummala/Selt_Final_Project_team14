@@ -2,29 +2,18 @@
 
 Heroku Site: https://cartographme.herokuapp.com/   
                 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+****Using Branches****
+Suggested Methodology:
+  When starting to work on a new feature,
+–    Pull down the latest codebase from GitHub;
+        git pull
+– create a branch: (only have to do this once, subsequent times only have to do git checkout <branchname>)
+        git branch <branchname>
+        git checkout <branchname>
+– Do your development on the branch, commiting often
+– When you are done with the feature, update your master branch from GitHub and merge your branch back into the master branch:
+        git checkout master
+        git pull 
+        git merge <branchname>    
+– Push your updated code back to GitHub:
+        git push
