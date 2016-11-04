@@ -38,4 +38,8 @@ class HomeController < ApplicationController
     @allMarkers = Key_Location.all
     gon.allMarkers = @allMarkers
   end
+  
+  def search_friends
+  end
+  
 end
