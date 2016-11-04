@@ -3,7 +3,8 @@ class CreateKeyLocations < ActiveRecord::Migration
     create_table :key_locations do |t|
       t.string :lat
       t.string :lng
-      t.string :infowindow
+      t.string :name
+      t.text   :description
     end
   end
 end
