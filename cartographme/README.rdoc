@@ -10,6 +10,7 @@ Suggested Methodology:
 – create a branch: (only have to do this once, subsequent times only have to do git checkout <branchname>)
         git branch <branchname>
         git checkout <branchname>
+        git merge master
 – Do your development on the branch, commiting often
 – When you are done with the feature, update your master branch from GitHub and merge your branch back into the master branch:
         git checkout master
