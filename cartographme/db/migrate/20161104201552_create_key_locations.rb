@@ -4,7 +4,7 @@ class CreateKeyLocations < ActiveRecord::Migration
       t.string :lat
       t.string :lng
       t.string :name
-      t.text   :description
+      t.text :description
     end
   end
 end
