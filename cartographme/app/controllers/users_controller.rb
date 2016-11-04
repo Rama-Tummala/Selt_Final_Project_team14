@@ -4,12 +4,22 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.search(params[:search])
+    if params[:search]
+      @users = User.where("username LIKE ?", "%#{params[:search]}%")
+      #if @users.empty
+      
+    else
+      # Please enter search term
+      @users = User.all
+    end
+    #@users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
