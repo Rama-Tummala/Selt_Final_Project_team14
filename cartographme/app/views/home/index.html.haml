@@ -1,4 +1,9 @@
 / Home page
-%h1#banner Cartographme
+%table 
+  %thead
+    %tr
+      = button_to "Search Users", users_path
+      = button_to "Following", users_following_path
+      = button_to 'My Profile', users_profile_path
 
-#map{:style => "width:800px; height: 400px;"}
+#map{:style => "width:100; height:700px;"}

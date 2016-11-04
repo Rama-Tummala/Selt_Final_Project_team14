@@ -3,7 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users, force: :cascade do |t|
         t.string   :name
         t.string   :email
-        t.string   :password
+        t.string   :session_token
+        t.string   :password_digest
         t.string   :home_city
         t.string   :recommended_places
         t.string   :places_visited

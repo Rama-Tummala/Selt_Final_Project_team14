@@ -38,7 +38,7 @@ RP1 = {
             "<label>Description<br><input type='text' name='Description' value='...'></label><br>"+
             "<label>Latitude<input type='text' name='Latitude' value="+e.latLng.lat()+"></label><br>"+
             "<label>Longitude<input type='text' name='Longitude' value="+e.latLng.lng()+"></label><br>"+
-            "<input value='TEST Button' type='submit' />"+
+            "<input value='Submit' type='submit' />"+
           "</form>"+
         "</div>";
         right_click_menu.setContent(menu_content);

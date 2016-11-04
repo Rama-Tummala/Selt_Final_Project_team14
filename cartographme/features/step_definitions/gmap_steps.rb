@@ -32,31 +32,33 @@
  
   When /^I select a key location from the map$/ do 
      pending
+     #TODO: trigger js marker event
     
   end
   
   Given /^I confirm I have visited the location$/ do 
      pending
-    
+    #TODO: click button after marker event
   end
   
   Then /^I should see the marker chage to visited$/ do 
      pending
-    
+    #TODO: check image uri for visisted marker
   end
   
 
   When /^I right click a point on the map$/ do 
-     pending
-    
+    pending
+    #TODO: trigger gmap right click event
   end
   
   When /^I click recomend key location$/ do
      pending
-    
+    #TODO: click recomend button
   end
+  
   Then /^I should see a confirmation the location has been recomended$/ do 
-     pending
-    
+    pending
+    #TODO check page content for location add
   end
   
