@@ -1,29 +1,21 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
+  before_filter :set_current_user, :only=> ['show', 'edit', 'update', 'delete']
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-
-  # GET /users/1
-  # GET /users/1.json
+  
   def show
+    @user = User.find(params[:id])
+ #   @user = @current_user
   end
 
-  # GET /users/new
   def new
-    @user = User.new
+    
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users
-  # POST /users.json
   def create
+    puts User
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -78,3 +70,12 @@ class UsersController < ApplicationController
     def following
     end
 end
+    if @user.save
+      flash[:notice] = "Sign up successful! Welcome"
+      redirect_to login_path
+    else
+      render 'new'
+    end  
+  end  
+  
+end 
