@@ -39,3 +39,13 @@ key_locations = Key_Location.create([
         infowindow: "North Market Park."
       }
     ])
+User.create(username: 'Nhan', password:"")
+User.create(username: 'Nhan Tran', password:"")
+User.create(username: 'Nhan Tran-Phan', password:"")
+User.create(username: 'James', password:"")
+User.create(username: 'Josh', password:"")
+User.create(username: 'Jake', password:"")
+User.create(username: 'Ramadevi', password:"")
+User.create(username: 'Ash', password:"")
+User.create(username: 'Ashlyn', password:"")
+User.create(username: 'Ashley', password:"")
