@@ -35,7 +35,7 @@ class HomeController < ApplicationController
     #   }
     # ]
     # gon.allMarkers = @allMarkers
-    @locations = Key_Location.all
-    gon.allMarkers = @locations
+    @allMarkers = Key_Location.all
+    gon.allMarkers = @allMarkers
   end
 end
