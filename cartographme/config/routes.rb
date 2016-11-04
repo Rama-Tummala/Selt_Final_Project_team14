@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   resources :users
+  
+  post 'home/search_friends'
+  post 'users/profile'
+  post 'users/following'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

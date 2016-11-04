@@ -71,4 +71,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password)
     end
+    
+    def profile
+    end
+    
+    def following
+    end
 end
