@@ -6,35 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-key_locations = key_location.create([
+key_locations = Key_Location.create([
       {
         lat: '41.659763', 
         lng: '-91.532282',
-        location_name: 'Englert Civic Theatre'
+        infowindow: 'Englert Civic Theatre'
       },
       {
         lat: '41.661291',
         lng: '-91.536145',
-        location_name: "Old Capitol Museum."
+        infowindow: "Old Capitol Museum."
       },
       {
         lat: '41.658718',
         lng: '-91.551107',
-        location_name: "Kinnick Stadium."
+        infowindow: "Kinnick Stadium."
       },
       {
         lat: '41.659401',
         lng: '-91.526448',
-        location_name: "College Green Park."
+        infowindow: "College Green Park."
       },
       {
         lat: '41.663622',
         lng: '-91.530299',
-        location_name: "The Bluebird Diner."
+        infowindow: "The Bluebird Diner."
       },
       {
         lat: '41.666768',
         lng: '-91.527106',
-        location_name: "North Market Park."
+        infowindow: "North Market Park."
       }
     ])
