@@ -3,11 +3,25 @@ class UsersController < ApplicationController
   before_filter :set_current_user, :only=> ['show', 'edit', 'update', 'delete']
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  # GET /users
+  # GET /users.json
+  def index
+    #@users = User.search(params[:search])
+    if params[:search]
+      @users = User.where("username LIKE ?", "%#{params[:search]}%")
+      #if @users.empty
+      
+    else
+      # Please enter search term
+      @users = User.all
+    end
+    #@users = User.all
   end
   
   def show
     @user = User.find(params[:id])
  #   @user = @current_user
+
   end
 
   def new
