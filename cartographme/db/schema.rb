@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20161104201552) do
   create_table "key_locations", force: :cascade do |t|
     t.string "lat"
     t.string "lng"
-    t.string "name"
-    t.text "description"
+    t.string "infowindow"
   end
 
   create_table "users", force: :cascade do |t|

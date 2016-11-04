@@ -37,25 +37,24 @@ class HomeController < ApplicationController
     #   }
     # ]
     # gon.allMarkers = @allMarkers
-    @allMarkers = Key_Location.all
-  
-    @allMarkers.each|loc|do
-      info_content = "
-      <div id='content'>
-        <p></p>
-        <form method='get' action='/home/index' class='button_to'>
-          <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
-          <input value='Mark as visited.' type='submit' />
-        </form>
-      </div>"
-      #marker["infowindow"] = info_content;
-    end
+     
+      @allMarkers = Key_Location.all
+      @allMarkers.each|loc|do
+        infowindow = "
+        <div id='content'>
+          <p></p>
+          <form method='get' action='/home/index' class='button_to'>
+            <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
+            <input value='Mark as visited.' type='submit' />
+          </form>
+        </div>"
+        #marker["infowindow"] = info_content;
+      end
+      
+     
     
-   
-    
-    
-    @allMarkers.each() do
     gon.allMarkers = @allMarkers
+    
   end
   
   def search_friends
