@@ -38,22 +38,29 @@ class HomeController < ApplicationController
     # ]
     # gon.allMarkers = @allMarkers
      
-      @allMarkers = Key_Location.all
-      @allMarkers.each|loc|do
-        infowindow = "
+      @all_locations = Key_Location.all
+      @all_markers= Array.new
+      @all_locations.each do |loc|
+        info_content = "
         <div id='content'>
-          <p></p>
+          <p>#{loc.name}</p>
           <form method='get' action='/home/index' class='button_to'>
             <input type='hidden' name='location' value='Englert_Civic_Theatre'><br>
             <input value='Mark as visited.' type='submit' />
           </form>
         </div>"
-        #marker["infowindow"] = info_content;
+        marker={
+          "lat" => loc.lat,
+          "lng" => loc.lng,
+          "infowindow" => info_content
+        }
+       
+        @all_markers.push(marker)
       end
       
-     
+
     
-    gon.allMarkers = @allMarkers
+    gon.allMarkers = @all_markers
     
   end
   

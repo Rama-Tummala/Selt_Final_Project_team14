@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20161104201552) do
     t.string "lat"
     t.string "lng"
     t.string "name"
-    t.text "description"
+    t.text   "description"
   end
 
   create_table "users", force: :cascade do |t|
