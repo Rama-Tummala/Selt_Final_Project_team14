@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
 
   before_filter :set_current_user, :only=> ['show', 'edit', 'update', 'delete']
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+  
   # GET /users
   # GET /users.json
   def index
     #@users = User.search(params[:search])
     if params[:search]
-      @users = User.where("username LIKE ?", "%#{params[:search]}%")
+      @users = User.where("name LIKE ?", "%#{params[:search]}%")
       #if @users.empty
       
     else
@@ -21,12 +19,10 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
- #   @user = @current_user
-
   end
 
   def new
-    
+    @user = User.new
   end
 
   def create
@@ -66,29 +62,13 @@ class UsersController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
-      # Use callbacks to share common setup or constraints between actions.
-      def set_user
-        @user = User.find(params[:id])
-      end
-  
-      # Never trust parameters from the scary internet, only allow the white list through.
-      def user_params
-        params.require(:user).permit(:username, :password)
-      end
-      
-      def profile
-      end
-      
-      def following
-      end
-  end
-  
-end 
-=======
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+    def correct_user
       @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
     
     def profile
@@ -96,5 +76,5 @@ end
     
     def following
     end
-end
->>>>>>> master
+  
+  end
