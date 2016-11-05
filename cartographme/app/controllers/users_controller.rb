@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     puts User
     @user = User.new(user_params)
 
-    if @user.save
+     if @user.save
       flash[:notice] = "Sign up successful! Welcome"
       redirect_to login_path
     else
