@@ -4,11 +4,6 @@ RP1 = {
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(gon.allMarkers);
       
-      /*var circles = handler.addCircles(
-        [{ lat: 41.662447, lng: -91.5311273, radius: 500 }],
-        { strokeColor: '#2e633d', fillColor: '#37e869'}
-      );*/
-      
         var menu_content = "<div id='content'>"+
           "<p>Englert Civic Theatre</p>"+
           "<form method='get' action='/home/index' class='button_to'>"+
