@@ -33,15 +33,12 @@ class UsersController < ApplicationController
     puts User
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    if @user.save
+      flash[:notice] = "Sign up successful! Welcome"
+      redirect_to login_path
+    else
+      render 'new'
+    end  
   end
 
   # PATCH/PUT /users/1
@@ -69,6 +66,7 @@ class UsersController < ApplicationController
   end
 
   private
+<<<<<<< HEAD
       # Use callbacks to share common setup or constraints between actions.
       def set_user
         @user = User.find(params[:id])
@@ -87,3 +85,16 @@ class UsersController < ApplicationController
   end
   
 end 
+=======
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+    
+    def profile
+    end
+    
+    def following
+    end
+end
+>>>>>>> master
