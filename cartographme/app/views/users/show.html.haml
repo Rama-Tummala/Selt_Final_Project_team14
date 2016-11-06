@@ -1,11 +1,15 @@
 %h1 User profile
 
 %p#notice= notice
-%p
-  %strong Username:
+%h2 
+  %strong Name:
   = @user.name
-%p
+%h2 
   %strong Email:
   = @user.email
-|
-= link_to 'Back', home_index_path
+  
+%h2 
+  %strong Locations visited:
+
+%h2
+  %strong Recommended Places

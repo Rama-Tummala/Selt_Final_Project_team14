@@ -34,7 +34,8 @@ textarea {
     margin-bottom: 10px;
   }
 }
-.myButton {
+.button {
+  
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -60,7 +61,7 @@ textarea {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 }
-.myButton:hover {
+.button:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
 	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
 	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
@@ -70,7 +71,7 @@ textarea {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
 	background-color:#f6f6f6;
 }
-.myButton:active {
+.button:active {
 	position:relative;
 	top:1px;
 }
@@ -94,7 +95,6 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $grayLight;
 }
 
 p {

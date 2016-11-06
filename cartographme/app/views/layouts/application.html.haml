@@ -12,7 +12,7 @@
   %body
     %h1.title Cartographme
     #main
-      = button_to "Home", home_index_path, :method => :get, :id => 'home_button'
+      = button_to "Home", home_index_path, :method => :get, :id => 'home_button', :class => "button" 
       - if flash[:notice]
         #notice.flash_message= flash[:notice]
       - elsif flash[:warning]
@@ -20,9 +20,9 @@
         
       -if @current_user
         
-        = button_to 'Logout', logout_path , :method => :delete , :id => 'logout'
+        = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button" 
        
       -else
-        = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin'
+        = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin', :class => "button" 
       
     = yield
