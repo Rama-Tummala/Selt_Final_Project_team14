@@ -1,5 +1,6 @@
 #Controller for main page not asscociated with any 1 model
 class HomeController < ApplicationController
+  before_filter :set_current_user
   def index
     #adds test locations to all Markers will be from locations db when done
     @allMarkers = [
