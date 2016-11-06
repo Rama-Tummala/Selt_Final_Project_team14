@@ -1,10 +1,9 @@
 %p#notice= notice
 %p
   %strong Username:
-  = @user.username
+  = @user.name
 %p
-  %strong Password:
-  = @user.password
-= link_to 'Edit', edit_user_path(@user)
+  %strong Email:
+  = @user.email
 |
-= link_to 'Back', users_path
+= link_to 'Back', home_index_path
