@@ -7,6 +7,10 @@ end
     visit signup_path
 end
 
+Given /^that I have gone to the user search page$/ do
+  visit users_path
+end
+
 When /^I have entered email with "([^"]*)" and password with "([^"]*)"$/ do |email,pwd|
      visit login_path
      fill_in 'session_password', :with=> pwd
@@ -35,7 +39,19 @@ end
  When(/^I click on the Create my account button$/) do
   click_button 'Create my account'
 end
+  
+  
+When /^I add "(.*)" to the search box$/ do |item|
+  fill_in 'search', :with => item
+end
+And /^click the Search Button$/ do
+  click_button 'Search'
+end
 
- 
-  
-  
+Then /^(?:|I )should see "([^"]*)" in the results$/ do |text|
+  expect(page).to have_content(text)
+end
+
+Then /^(?:|I )should not see "([^"]*)" in the results$/ do |text|
+  expect(page).to have_no_content(text)
+end
