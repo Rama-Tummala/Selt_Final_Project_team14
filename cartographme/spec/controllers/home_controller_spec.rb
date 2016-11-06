@@ -14,6 +14,12 @@ RSpec.describe HomeController, type: :controller do
       expect(assigns(:all_markers)[0]).to include("lat" => 1, "lng" => 2)
       expect(assigns(:all_markers)[1]).to include("lat" => 3, "lng" => 4)
     end
+    
+    it "assigns nothing if given keylocations returns nothing" do
+      expect(Key_Location).to receive(:all).and_return([])
+      get :index
+      expect(assigns(:all_markers)).to eql([])
+    end
   end
   
 end
