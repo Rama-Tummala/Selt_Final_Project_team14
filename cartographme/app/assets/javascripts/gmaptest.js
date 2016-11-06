@@ -33,7 +33,7 @@ RP1 = {
             "<label>Description<br><input type='text' name='Description' value='...'></label><br>"+
             "<label>Latitude<input type='text' name='Latitude' value="+e.latLng.lat()+"></label><br>"+
             "<label>Longitude<input type='text' name='Longitude' value="+e.latLng.lng()+"></label><br>"+
-            "<input value='Submit' type='submit' />"+
+            "<input value='Submit' type='submit' id='recomend_button' />"+
           "</form>"+
         "</div>";
         right_click_menu.setContent(menu_content);
@@ -47,5 +47,6 @@ RP1 = {
      // handler.getMap().fitBounds(new google.maps.LatLngBounds({lat: 41.653900, lng: -91.543399},{lat: 41.670018, lng: -91.514489});
     });
     }
+    
 }
 $(RP1.setup);       // when document ready, run setup code

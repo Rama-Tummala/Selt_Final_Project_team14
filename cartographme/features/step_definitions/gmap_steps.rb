@@ -10,51 +10,61 @@
  end
  
   Given /^the following key locations have been added to the city:$/ do |key_locations_table|
-    pending
      key_locations_table.hashes.each do |location|
-     #TODO: Add location to db
+     key_locations = Key_Location.create(
+      {
+        lat: location["lat"], 
+        lng: location["lng"],
+        name: location["name"]
+      })
    end
   end
   
   
   Then /^I should see a map displayed$/ do 
-   pending
-    #TODO:check page for map id 
-   
+    page.has_css?('div#map')
+    within('div#map') do
+      page.has_css?('div.gm-style')
+    end
   end
   
   Then /^I should see a "(.*?)" marker$/ do|location_name|
-    pending
-    #TODO:check page for name of city
+    page.has_content?("Englert Civic Theatre")
   end
   
 
- 
-  When /^I select a key location from the map$/ do 
-     pending
-     #TODO: trigger js marker event
+      
+
     
-  end
-  
+    When /^I select a key location from the map$/ do 
+      pending
+      Capybara.register_driver :selenium do |app|
+        Capybara::Selenium::Driver.new(
+          app,
+          browser: :firefox,
+          desired_capabilities: Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false)
+        )
+      end
+      page.execute_script("google.maps.event.trigger(marker, 'click', { latLng: new google.maps.LatLng(41.659763, -91.532282)});")
+    end
+
+
   Given /^I confirm I have visited the location$/ do 
-     pending
-    #TODO: click button after marker event
+    find_button(id: 'visited_button').click
   end
   
-  Then /^I should see the marker chage to visited$/ do 
+  Then /^I should see the marker change to visited$/ do 
      pending
     #TODO: check image uri for visisted marker
   end
   
 
   When /^I right click a point on the map$/ do 
-    pending
-    #TODO: trigger gmap right click event
+    find("div#map").trigger('rightclick')
   end
   
   When /^I click recomend key location$/ do
-     pending
-    #TODO: click recomend button
+     find_button(id: 'recomend_button').click
   end
   
   Then /^I should see a confirmation the location has been recomended$/ do 

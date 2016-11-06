@@ -11,7 +11,7 @@ class HomeController < ApplicationController
           <p>#{loc.name}</p>
           <form method='get' action='/home/index' class='button_to'>
             <input type='hidden' name='location' value=#{loc.name}><br>
-            <input value='Mark as visited.' type='submit' />
+            <input value='Mark as visited.' type='submit', id='visited_button' />
           </form>
         </div>"
         marker={
