@@ -17,9 +17,12 @@
         #notice.flash_message= flash[:notice]
       - elsif flash[:warning]
         #warning.flash_message= flash[:warning]
-      -if !@current_user
-        = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin'
-      -else
+        
+      -if @current_user
+       
         = button_to 'Logout', logout_path , :method => :delete , :id => 'logout'
+       
+      -else
+        = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin'
       
     = yield

@@ -1,39 +1,75 @@
 class UsersController < ApplicationController
 
+
+
   before_filter :set_current_user, :only=> ['show', 'edit', 'update', 'delete']
+
   
+
   # GET /users
+
   # GET /users.json
+
   def index
+
     #@users = User.search(params[:search])
+
     if params[:search]
+
       @users = User.where("name LIKE ?", "%#{params[:search]}%")
+
       #if @users.empty
+
       
+
     else
+
       # Please enter search term
+
       @users = User.all
+
     end
+
     #@users = User.all
+
   end
+
   
+
   def show
+
     @user = User.find(params[:id])
+
   end
+
+
 
   def new
+
     @user = User.new
+
   end
 
+
+
   def create
+
     puts User
+
     @user = User.new(user_params)
 
+
+
      if @user.save
+
       flash[:notice] = "Sign up successful! Welcome"
+
       redirect_to login_path
+
     else
+
       render 'new'
+
     end  
   end
 
