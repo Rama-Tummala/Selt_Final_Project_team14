@@ -9,10 +9,11 @@
 <% end %>
 
 <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 50 %>
-      <%= user.name %>
-      | 
-      <%= link_to "see profile", user %>
-    </li>
-  <% end %>
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= user.name %>
+  | 
+  <%= link_to "see profile", user %>
+  
+</li>
+<% end %>
