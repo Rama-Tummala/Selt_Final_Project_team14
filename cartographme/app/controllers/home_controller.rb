@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   def index
     #adds test locations to all Markers will be from locations db when done
-      @all_locations = Key_Location.all
+      @all_locations = KeyLocation.all
       @all_markers= Array.new
       @all_locations.each do |loc|
         info_content = loc.getInfoString()

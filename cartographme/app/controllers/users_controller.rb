@@ -33,11 +33,7 @@ class UsersController < ApplicationController
     puts User
     @user = User.new(user_params)
 
-<<<<<<< HEAD
-     if @user.save
-=======
     if @user.save
->>>>>>> cc28abdcf236d24b2d68eb69d994bcfff3f550ae
       flash[:notice] = "Sign up successful! Welcome"
       redirect_to login_path
     else
@@ -85,9 +81,4 @@ class UsersController < ApplicationController
     
     def following
     end
-<<<<<<< HEAD
-  end
-  
-=======
 end
->>>>>>> cc28abdcf236d24b2d68eb69d994bcfff3f550ae
