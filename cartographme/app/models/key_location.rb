@@ -1,4 +1,4 @@
-class Key_Location < ActiveRecord::Base
+class KeyLocation < ActiveRecord::Base
   
   #html used for gmap marker menu
   def getInfoString()
@@ -12,7 +12,5 @@ class Key_Location < ActiveRecord::Base
         </div>"
     
   end
-  def getHamlInfoString()
-    contentString="%#content\n  %p#{name}"
-  end
+
 end
