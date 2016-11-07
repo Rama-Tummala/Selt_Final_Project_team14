@@ -18,7 +18,7 @@ RSpec.describe HomeController, type: :controller do
     end
     
     it "assigns nothing if given keylocations returns nothing" do
-      expect(Key_Location).to receive(:all).and_return([])
+      expect(KeyLocation).to receive(:all).and_return([])
       get :index
       expect(assigns(:all_markers)).to eql([])
     end
