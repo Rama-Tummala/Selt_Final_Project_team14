@@ -15,7 +15,7 @@ RP1 = {
           "</form>"+
         "</div>";
         
-        var right_click_menu = new google.maps.InfoWindow({
+        right_click_menu = new google.maps.InfoWindow({
           content: menu_content
         });
       
@@ -29,24 +29,46 @@ RP1 = {
         menu_content = "<div id='content'>"+
           "<p>Recomend Location</p>"+
           "<form method='get' action='/home/index' class='button_to'>"+
-            "<label>Location Name<br><input type='text' name='location_name' value='...'></label><br>"+
-            "<label>Description<br><input type='text' name='Description' value='...'></label><br>"+
-            "<label>Latitude<input type='text' name='Latitude' value="+e.latLng.lat()+"></label><br>"+
-            "<label>Longitude<input type='text' name='Longitude' value="+e.latLng.lng()+"></label><br>"+
+            "<label>Location Name<br><input type='text' name='location_name' id='location_name' value='...'></label><br>"+
+            "<label>Description<br><input type='text' name='description' id='description' value='...'></label><br>"+
+            "<label>Latitude<input type='text' name='latitude' id='latitude' value="+e.latLng.lat()+"></label><br>"+
+            "<label>Longitude<input type='text' name='longitude' id='longitude' value="+e.latLng.lng()+"></label><br>"+
             "<input value='Submit' type='submit' id='recomend_button' />"+
           "</form>"+
         "</div>";
         right_click_menu.setContent(menu_content);
         right_click_menu.setPosition(e.latLng);
         right_click_menu.open(handler.getMap());
+        $(document).on('click','#recomend_button',RP1.recomendLocation)
       });
    
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       handler.getMap().setZoom(15);
-     // handler.getMap().fitBounds(new google.maps.LatLngBounds({lat: 41.653900, lng: -91.543399},{lat: 41.670018, lng: -91.514489});
     });
+    },
+    recomendLocation: function(){
+      $.ajax({type: 'POST',
+              url: '/key_location/new',
+              timeout: 5000,
+              success: RP1.successfullRecomendation,
+              error: function(data,requestStatus,xhrObject){ alert("Error sending recomendation.")}, 
+              data:"name="+$( "input#location_name" ).val()+"&lat="+$( "input#latitude" ).attr('value')+"&lng="+$( "input#longitude" ).attr('value')
+      });
+      right_click_menu.close()
+      return(false);
+    },
+    successfullRecomendation: function(data,requestStatus,xhrObject){
+      var lngData = $(data).find("li#lng").attr("value");
+      var latData = $(data).find("li#lat").attr("value");
+      handler.addMarkers([
+        {
+          "lat": latData,
+          "lng": lngData,
+          "infowindow": data
+        }
+      ]);
     }
     
-}
+};
 $(RP1.setup);       // when document ready, run setup code
