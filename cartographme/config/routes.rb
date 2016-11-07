@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'key_location/new'
+
   get 'sessions/new'
 
   get 'users/new'
