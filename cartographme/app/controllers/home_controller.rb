@@ -5,19 +5,12 @@ class HomeController < ApplicationController
       @all_locations = Key_Location.all
       @all_markers= Array.new
       @all_locations.each do |loc|
-        info_content = "
-        <div id='content'>
-          <p>#{loc.name}</p>
-          <form method='get' action='/home/index' class='button_to'>
-            <input type='hidden' name='location' value=#{loc.name}><br>
-            <input value='Mark as visited.' type='submit', id='visited_button' />
-          </form>
-        </div>"
+        info_content = loc.getInfoString()
         marker={
-          "lat" => loc.lat,
-          "lng" => loc.lng,
-          "infowindow" => info_content,
-          "icon" => "green_dot.png"
+          :lat => loc.lat,
+          :lng => loc.lng,
+          :infowindow => info_content,
+          :icon => "green_dot.png"
         }
        
         @all_markers.push(marker)
