@@ -17,12 +17,7 @@ class UsersController < ApplicationController
   def create
     puts User
     @user = User.new(user_params)
-<<<<<<< HEAD
      if @user.save
-=======
-
-    if @user.save
->>>>>>> james
       flash[:notice] = "Sign up successful! Welcome"
       redirect_to login_path
     else
@@ -69,9 +64,5 @@ class UsersController < ApplicationController
     
     def following
     end
-<<<<<<< HEAD
   
   end
-=======
-end
->>>>>>> james
