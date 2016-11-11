@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109010732) do
+ActiveRecord::Schema.define(version: 20161111020434) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20161109010732) do
     t.string "name"
     t.text   "description"
   end
+
+  create_table "key_locations_users", id: false, force: :cascade do |t|
+    t.integer "key_location_id"
+    t.integer "user_id"
+  end
+
+  add_index "key_locations_users", ["key_location_id", "user_id"], name: "index_key_locations_users_on_key_location_id_and_user_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"

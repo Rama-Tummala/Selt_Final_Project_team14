@@ -1,5 +1,7 @@
 class KeyLocation < ActiveRecord::Base
   
+  has_and_belongs_to_many :visitors, :class_name => "User"
+  
   #html used for gmap marker menu
   def getInfoString()
     contentString="
