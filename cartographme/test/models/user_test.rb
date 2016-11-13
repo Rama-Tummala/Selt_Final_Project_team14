@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
+describe "User", ActiveSupport::TestCase do
     
-  test "should follow and unfollow a user" do
+  it "should follow and unfollow a user" do
     michael = users(:michael)
     archer  = users(:archer)
     assert_not michael.following?(archer)
     michael.follow(archer)
-    assert michael.following?(archer)
-    assert archer.followers.include?(michael)
+    michael.following?(archer).should.not == nil
+    archer.followers.include?(michael).should.not == nil
     michael.unfollow(archer)
     assert_not michael.following?(archer)
   end

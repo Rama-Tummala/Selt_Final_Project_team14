@@ -2,10 +2,29 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
+  before do
+    @user = users(:michael)
+    @other_user = users(:archer)
+  end
+  
   describe "GET #new" do
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
+    end
+  end
+  
+  describe "redirect #following if not logged in" do
+    it "should redirect following when not logged in" do
+      get following_user_path(@user)
+      assert_redirected_to login_url
+    end
+  end
+
+  describe "redirect #followers if not logged in" do
+    it "should redirect followers when not logged in" do
+    get followers_user_path(@user)
+    assert_redirected_to login_url
     end
   end
   

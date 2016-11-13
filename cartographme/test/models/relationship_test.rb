@@ -1,22 +1,22 @@
 require 'test_helper'
 
-class RelationshipTest < ActiveSupport::TestCase
+describe "Relationship", ActiveSupport::TestCase do
 
-  def setup
+  before do
     @relationship = Relationship.new(follower_id: users(:jake).user_id,
                                      followed_id: users(:nhan).user_id)
   end
 
-  test "should be valid" do
-    assert @relationship.valid?
+  it "should be valid" do
+    @relationship.valid?.should.not == nil
   end
 
-  test "should require a follower_id" do
+  it "should require a follower_id" do
     @relationship.follower_id = nil
     assert_not @relationship.valid?
   end
 
-  test "should require a followed_id" do
+  it "should require a followed_id" do
     @relationship.followed_id = nil
     assert_not @relationship.valid?
   end
