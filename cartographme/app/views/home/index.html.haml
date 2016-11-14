@@ -1,11 +1,11 @@
 / Home page
 %table 
-  %thead
-    %tr 
-      
-      -if @current_user
-        = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
-        = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
-        = button_to "Following",users_following_path, :class => "button" 
-        #map{:style => "width:50; height:350px;"}
+  -if @current_user
+    = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button" 
+    = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
+    = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
+    = button_to "Following",users_following_path, :class => "button" 
+    #map{:style => "width:50; height:350px;"}
+  -else
+    = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin', :class => "button" 
 

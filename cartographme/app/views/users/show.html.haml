@@ -7,7 +7,15 @@
 %h2 
   %strong Email:
   = @user.email
-  
+
+%h2 
+  %strong Following Stats:
+  %section.stats
+  = render 'shared/stats'
+
+.col-md-8
+  = render 'follow_form' if logged_in?
+
 %h2 
   %strong Locations visited:
 

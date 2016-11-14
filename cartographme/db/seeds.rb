@@ -39,13 +39,22 @@ key_locations = KeyLocation.create([
         name: "North Market Park."
       }
     ])
-User.create(name: 'Nhan', email: "ntran93@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Nhan Tran', email: "n@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Nhan Tran-Phan', email: "ntp@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'James', email: "james@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Josh', email: "josh@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Jake', email: "jake@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Ramadevi', email: "rama@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Ash', email: "ash@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Ashlyn', email: "ashlyn@gmail.com", password:"123456", password_confirmation:"123456")
-User.create(name: 'Ashley', email: "ashley@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Nhan', email: "ntran93@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Nhan Tran', email: "n@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Nhan Tran-Phan', email: "ntp@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'James', email: "james@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Josh', email: "josh@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Jake', email: "jake@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Ramadevi', email: "rama@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Ash', email: "ash@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Ashlyn', email: "ashlyn@gmail.com", password:"123456", password_confirmation:"123456")
+User.create!(name: 'Ashley', email: "ashley@gmail.com", password:"123456", password_confirmation:"123456")
+
+
+#following relationships
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each {|followed| user.follow(followed)}
+followers.each {|follower| follower.follow(user)}
