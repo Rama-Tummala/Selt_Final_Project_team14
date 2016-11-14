@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'users/profile'
   post 'users/following'
   
-  resources :users #do
+  resources :users do
     member do
       get :following, :followers
     end
