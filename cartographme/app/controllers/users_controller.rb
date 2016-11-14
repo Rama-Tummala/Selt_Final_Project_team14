@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   def create
     puts User
     @user = User.new(user_params)
-     if @user.save
+
+    if @user.save
       flash[:notice] = "Sign up successful! Welcome"
       redirect_to login_path
     else
@@ -48,39 +49,22 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #private
+  # Use callbacks to share common setup or constraints between actions.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  def profile
+  end
   
   def following
-    @title = "Following"
-    @user = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
   end
   
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-    
-    def profile
-    end
-<<<<<<< HEAD
-    
-    def following
-    end
-  
-  end
-=======
 end
->>>>>>> 223b209d4237fba50a8afe815dbfcbee66f831a2
