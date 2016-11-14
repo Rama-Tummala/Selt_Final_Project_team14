@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   post 'users/following'
   
   resources :users #do
-    #member do
-     # get :following, :followers
-    #end
+    member do
+      get :following, :followers
+    end
   end
   resources :sessions
   resources :relationships, only: [:create, :destroy]
