@@ -62,25 +62,22 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-    
-    def profile
-    end
-<<<<<<< HEAD
-    
-    def following
-    end
   
+  #private
+  # Use callbacks to share common setup or constraints between actions.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-=======
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  def profile
+  end
+  
+  def following
+  end
+  
 end
->>>>>>> 223b209d4237fba50a8afe815dbfcbee66f831a2

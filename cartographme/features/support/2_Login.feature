@@ -1,7 +1,9 @@
 Feature: Allow  user to login
 
-Background : Correct page
-  Given I am on login page
+Background: The user has already been signed in
+  
+  Given I am on login page 
+  Given I am a register user
   
 Scenario: Successful Login 
   

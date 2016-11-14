@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
+  post 'key_location/new'
+  post 'key_location/assign'
+
   get 'sessions/new'
   get 'users/new'
   
-  post 'key_location/new'
   post 'home/search_friends'
   post 'users/profile'
   post 'users/following'
