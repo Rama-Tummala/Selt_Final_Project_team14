@@ -1,0 +1,8 @@
+%ul
+  %li{:value => "#{new_marker[:lng]}", :id => "lng" }
+  %li{:value => "#{new_marker[:lat]}", :id => "lat" }
+#content
+  %p "#{new_marker[:name]}"
+  %form{:method =>'get', :action =>'/home/index', :class =>'button_to'}
+    %input{:type => 'hidden', :name =>'location', :value =>"#{new_marker[:name]}"}
+    %input{:type => 'submit', :id =>'visited_button', :value =>"Mark as visited."}

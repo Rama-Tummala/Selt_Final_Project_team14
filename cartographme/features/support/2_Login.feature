@@ -7,7 +7,7 @@ Background: The user has already been signed in
   
 Scenario: Successful Login 
   
-  When I have entered email with "swathi@abc.com" and password with "swathi"
+  When I have entered email with "rama@abc.com" and password with "123456"
   And I click on the login button
   Then I should see "Login successful! Welcome"
   

@@ -1,10 +1,23 @@
+%h1 User profile
+
 %p#notice= notice
-%p
-  %strong Username:
-  = @user.username
-%p
-  %strong Password:
-  = @user.password
-= link_to 'Edit', edit_user_path(@user)
-|
-= link_to 'Back', users_path
+%h2 
+  %strong Name:
+  = @user.name
+%h2 
+  %strong Email:
+  = @user.email
+
+%h2 
+  %strong Following Stats:
+  %section.stats
+  = render 'shared/stats'
+
+.col-md-8
+  = render 'follow_form'
+
+%h2 
+  %strong Locations visited:
+
+%h2
+  %strong Recommended Places

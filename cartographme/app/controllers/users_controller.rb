@@ -1,75 +1,28 @@
 class UsersController < ApplicationController
 
-
-
   before_filter :set_current_user, :only=> ['show', 'edit', 'update', 'delete']
 
-  
-
-  # GET /users
-
-  # GET /users.json
-
   def index
-
-    #@users = User.search(params[:search])
-
-    if params[:search]
-
-      @users = User.where("name LIKE ?", "%#{params[:search]}%")
-
-      #if @users.empty
-
-      
-
-    else
-
-      # Please enter search term
-
-      @users = User.all
-
-    end
-
-    #@users = User.all
-
+    @users = User.search( params[:search])
   end
-
-  
 
   def show
-
     @user = User.find(params[:id])
-
   end
-
-
 
   def new
-
     @user = User.new
-
   end
 
-
-
   def create
-
     puts User
-
     @user = User.new(user_params)
 
-
-
-     if @user.save
-
+    if @user.save
       flash[:notice] = "Sign up successful! Welcome"
-
       redirect_to login_path
-
     else
-
       render 'new'
-
     end  
   end
 
@@ -96,6 +49,21 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -109,8 +77,4 @@ class UsersController < ApplicationController
     
     def profile
     end
-    
-    def following
-    end
-  
-  end
+end

@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'users/new'
-
-  get 'home/index'
   root 'home#index'
-  resources :users
+  get 'home/index'
+  get 'sessions/new'
+  get 'users/new'
   
+  post 'key_location/new'
   post 'home/search_friends'
   post 'users/profile'
   post 'users/following'
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions
+  resources :relationships, only: [:create, :destroy]
+  
   match '/signup', to: 'users#new', via: :get
   match '/login', to: 'sessions#new', via: :get
   match '/logout', to: 'sessions#destroy', via: :delete
