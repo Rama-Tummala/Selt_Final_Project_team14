@@ -66,4 +66,5 @@ class UsersController < ApplicationController
   
   def following
   end
+  
 end

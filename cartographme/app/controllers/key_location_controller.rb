@@ -4,4 +4,15 @@ class KeyLocationController < ApplicationController
     @new_marker = {:name => params["name"],:infowindow => new_location.getInfoString(), :lat => params["lat"], :lng => params["lng"]}
     render(:partial => "new", locals: {new_marker: @new_marker} )
   end
+  
+  def assign
+    
+    puts params["location"]
+    puts session[:session_token]
+    user = User.find_by session_token: session[:session_token]
+    puts user.email
+    
+    redirect_to '/home/index'
+  end
+  
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'key_location/new'
+  post 'key_location/assign'
 
   get 'sessions/new'
 
