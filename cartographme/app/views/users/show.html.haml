@@ -18,6 +18,8 @@
 
 %h2 
   %strong Locations visited:
+  - @user.key_locations.each do |location|
+    %h2= location.name
 
 %h2
   %strong Recommended Places

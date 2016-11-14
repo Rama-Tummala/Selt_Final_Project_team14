@@ -65,6 +65,7 @@ class UsersController < ApplicationController
   end
   
 
+<<<<<<< HEAD
   private
     # Use callbacks to share common setup or constraints between actions.
     def user_params
@@ -78,3 +79,23 @@ class UsersController < ApplicationController
     def profile
     end
 end
+=======
+  #private
+  # Use callbacks to share common setup or constraints between actions.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  def profile
+  end
+  
+  def following
+  end
+  
+end
+>>>>>>> josh
