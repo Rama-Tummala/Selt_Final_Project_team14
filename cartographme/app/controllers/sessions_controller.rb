@@ -44,7 +44,7 @@ def create
    end
 =end   
    
-   def destroy
+  def destroy
     reset_session 
     @current_user=nil
     flash[:notice]= 'You have logged out'
