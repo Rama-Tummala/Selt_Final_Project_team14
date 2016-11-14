@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'sessions/new'
   get 'users/new'
-  get 'users/following'
   
   post 'key_location/new'
   post 'home/search_friends'
