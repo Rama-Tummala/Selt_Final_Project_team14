@@ -10,6 +10,10 @@
 
 %h2 
   %strong Following Stats:
+  %section.stats
+  = render 'shared/stats'
+  = render 'follow_form'
+
 %h2 
   %strong Locations visited:
   - @user.key_locations.each do |location|

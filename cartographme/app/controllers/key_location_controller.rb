@@ -7,11 +7,12 @@ class KeyLocationController < ApplicationController
   
   def assign
     
-    puts params["location"]
-    puts session[:session_token]
     user = User.find_by session_token: session[:session_token]
-    puts user.email
+    key_location = KeyLocation.find_by name: URI.decode(params["location"])
+    
+    key_location.visitors << user
     
     redirect_to '/home/index'
   end
+  
 end
