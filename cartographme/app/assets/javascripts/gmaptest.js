@@ -53,7 +53,7 @@ RP1 = {
               timeout: 5000,
               success: RP1.successfullRecomendation,
               error: function(data,requestStatus,xhrObject){ alert("Error sending recomendation.")}, 
-              data:"name="+$( "input#location_name" ).val()+"&lat="+$( "input#latitude" ).attr('value')+"&lng="+$( "input#longitude" ).attr('value')
+              data:"name="+$( "input#location_name" ).val()+"&description="+$( "input#description" ).val()+"&lat="+$( "input#latitude" ).attr('value')+"&lng="+$( "input#longitude" ).attr('value')
       });
       right_click_menu.close()
       return(false);

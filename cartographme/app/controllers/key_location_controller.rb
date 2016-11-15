@@ -5,9 +5,10 @@ class KeyLocationController < ApplicationController
       {:name => params["name"],
        :lat => params["lat"], 
        :lng => params["lng"],
+       :description => params["description"],
        :email => user.email
       })
-    @new_marker = {:name => params["name"],:infowindow => new_location.getInfoString(), :lat => params["lat"], :lng => params["lng"]}
+    @new_marker = {:name => params["name"],:infoWindow => new_location.getInfoString(), :description => params["description"], :lat => params["lat"], :lng => params["lng"]}
     flash[:notice] = "Location '#{new_location.name}' marked as recommended."
     new_location.recommenders << user
     

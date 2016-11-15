@@ -1,5 +1,15 @@
 <h1> User profile </h1> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#drop").click(function(){
+        $("p").toggle();
+    });
+    $("#drop1").click(function(){
+        $("p").toggle();
+    });
+});
+</script>
 <h2>
   <ul>
       <div class="dropdown">
@@ -22,24 +32,26 @@
       </div>
           
       <div class="dropdown">
-        <button class="dropbtn">Locations visited</button>
+        <button class="dropbtn" id="drop">Locations visited</button>
         <div class="dropdown-content">
             <% array = @user.key_locations%>
               <% array = array.uniq%>
               <% array.each do |location|%>
                   <a><%= location.name %></a>
+                  <p><%= location.description %></p>
               <% end %>
         </div>
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Recommended Places</button>
+        <button class="dropbtn" id="drop1">Recommended Places</button>
         <div class="dropdown-content">
             <% array = @user.key_locations%>
               <% array = array.uniq%>
               <% array.each do |location|%>
                   <% if location.email == @user.email %>
                   <a><%= location.name %></a>
+                  <p><%= location.description %></p>
                   <% end %>
               <% end %>
         </div>
