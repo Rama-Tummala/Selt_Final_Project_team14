@@ -1,5 +1,6 @@
 / Home page
 %table 
+<<<<<<< HEAD
   -if @current_user
     = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button" 
     = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
@@ -9,4 +10,14 @@
   -else
     %h2
       = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin', :class => "button" 
+=======
+  %thead
+    %tr 
+      
+      -if @current_user
+        = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
+        = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
+        = button_to "Following", :method => :get, :id => 'following_button', :class => "button" 
+        #map{:style => "width:100; height:700px;"}
+>>>>>>> 3319fc6644df71f3ea70254f44feac5e1434765f
 

@@ -49,7 +49,25 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+<<<<<<< HEAD
 
+=======
+  
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
+>>>>>>> 3319fc6644df71f3ea70254f44feac5e1434765f
   #private
   # Use callbacks to share common setup or constraints between actions.
   def user_params
@@ -66,4 +84,7 @@ class UsersController < ApplicationController
   def following
   end
 end
+<<<<<<< HEAD
   
+=======
+>>>>>>> 3319fc6644df71f3ea70254f44feac5e1434765f
