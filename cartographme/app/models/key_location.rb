@@ -12,11 +12,12 @@ class KeyLocation < ActiveRecord::Base
             <input type='hidden' name='location' value=#{URI.encode(name)}><br>
             <input value='Mark as visited' type='submit', id='visited_button'/>
           </form>
-          <form method='delete' action='key_location/destroy' class='button_to'>
-            <input value='Delete' type='submit', id='delete_button'/>
-          </form>
         </div>"
     
   end
 
 end
+
+#<form method='delete' action='key_location/destroy' class='button_to'>
+#            <input value='Delete' type='submit', id='delete_button'/>
+#          </form>
