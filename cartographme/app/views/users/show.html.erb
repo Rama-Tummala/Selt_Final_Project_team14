@@ -1,0 +1,48 @@
+<h1> User profile </h1> 
+
+<h2>
+  <ul>
+      <div class="dropdown">
+        <button class="dropbtn">User Info</button>
+        <div class="dropdown-content">
+          <a>
+              <strong>Name: </strong> <%=@user.name %>
+          </a>
+          <a>
+              <strong>Email: </strong> <%=@user.email %>
+          </a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Following Stats</button>
+        <div class="dropdown-content">
+            
+        </div>
+      </div>
+          
+      <div class="dropdown">
+        <button class="dropbtn">Locations visited</button>
+        <div class="dropdown-content">
+            <% array = @user.key_locations%>
+              <% array = array.uniq%>
+              <% array.each do |location|%>
+                  <a><%= location.name %></a>
+              <% end %>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Recommended Places</button>
+        <div class="dropdown-content">
+            <% array = @user.key_locations%>
+              <% array = array.uniq%>
+              <% array.each do |location|%>
+                  <% if location.email == @user.email %>
+                  <a><%= location.name %></a>
+                  <% end %>
+              <% end %>
+        </div>
+      </div>
+    </u1>
+  </h2>

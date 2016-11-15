@@ -1,13 +1,16 @@
-%p.login=link_to 'Sign_up for Cartographme',signup_path
+%h2
+  %p.login=link_to 'Sign_up for Cartographme',signup_path
 
 %h1 Log-in: 
 
-= form_tag sessions_path, :method => 'post' do
+%h2
+  = form_tag sessions_path, :method => 'post' do
 
-  = label :session, :user, 'Email'
-  = text_field :session, 'email'
+    = label :session, :user, 'Email'
+    = text_field :session, 'email'
 
-  = label :session, :password, 'Password'
-  = password_field :session, 'password'
+    = label :session, :password, 'Password'
+    = password_field :session, 'password'
 
-  = submit_tag 'Log in', :class => "button" 
+    %h2
+      = submit_tag 'Log in', :class => "button" 

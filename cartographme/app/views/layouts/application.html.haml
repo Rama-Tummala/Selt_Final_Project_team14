@@ -12,7 +12,8 @@
   %body
     %h1.title Cartographme
     #main
-      = button_to "Home", home_index_path, :method => :get, :id => 'home_button', :class => "button" 
+      %h2
+        = button_to "Home", root_url, :method => :get, :id => 'home_button', :class => "button" 
       - if flash[:notice]
         #notice.flash_message= flash[:notice]
       - elsif flash[:warning]

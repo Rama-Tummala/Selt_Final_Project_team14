@@ -27,12 +27,12 @@ RP1 = {
       
       handler.getMap().addListener('rightclick', function(e) {
         menu_content = "<div id='content'>"+
-          "<p>Recomend Location</p>"+
+          "<p>Recommend Location</p>"+
           "<form method='get' action='/home/index' class='button_to'>"+
             "<label>Location Name<br><input type='text' name='location_name' id='location_name' value='...'></label><br>"+
             "<label>Description<br><input type='text' name='description' id='description' value='...'></label><br>"+
-            "<label>Latitude<input type='text' name='latitude' id='latitude' value="+e.latLng.lat()+"></label><br>"+
-            "<label>Longitude<input type='text' name='longitude' id='longitude' value="+e.latLng.lng()+"></label><br>"+
+           "<input type='hidden' name='latitude' id='latitude' value="+e.latLng.lat()+"></label><br>"+
+            "<input type='hidden' name='longitude' id='longitude' value="+e.latLng.lng()+"></label><br>"+
             "<input value='Submit' type='submit' id='recomend_button' />"+
           "</form>"+
         "</div>";
