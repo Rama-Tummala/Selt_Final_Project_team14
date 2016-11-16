@@ -39,7 +39,7 @@ RP1 = {
         right_click_menu.setContent(menu_content);
         right_click_menu.setPosition(e.latLng);
         right_click_menu.open(handler.getMap());
-        $(document).on('click','#recomend_button',RP1.recomendLocation)
+        $(document).on('click','#recomend_button',RP1.recomendLocation);
       });
    
       handler.bounds.extendWith(markers);
@@ -48,6 +48,18 @@ RP1 = {
     });
     },
     recomendLocation: function(){
+  
+      if($( "input#location_name" ).val().length<3 || $("input#description" ).val().length<3  )
+      {
+        $('#content').prepend('<p id="name-lenght" class="invalid-form-warning">Location name and description must be at least 3 characters</p>');
+        return (false);
+      }
+      else
+      {
+        $('.invalid-form-warning').hide();
+      }
+        
+        
       $.ajax({type: 'POST',
               url: '/key_location/new',
               timeout: 5000,
@@ -55,7 +67,7 @@ RP1 = {
               error: function(data,requestStatus,xhrObject){ alert("Error sending recomendation.")}, 
               data:"name="+$( "input#location_name" ).val()+"&lat="+$( "input#latitude" ).attr('value')+"&lng="+$( "input#longitude" ).attr('value')
       });
-      right_click_menu.close()
+      right_click_menu.close();
       return(false);
     },
     successfullRecomendation: function(data,requestStatus,xhrObject){
@@ -72,3 +84,4 @@ RP1 = {
     
 };
 $(RP1.setup);       // when document ready, run setup code
+
