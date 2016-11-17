@@ -19,7 +19,7 @@
         <div class="dropdown-content a">
             <% array = @user.following%>
               <% array = array.uniq%>
-              <% if array.empty? == false do %>
+              <% if array.empty? == nil do %>
                 <% array.each do |follow|%>
                   <a><%= link_to "#{follow.name}", user_path(id: follow.id) %></a>
                 <% end %>
