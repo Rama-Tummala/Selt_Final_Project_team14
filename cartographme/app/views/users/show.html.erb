@@ -20,7 +20,7 @@
             <% array = @user.following%>
               <% array = array.uniq%>
               <% array.each do |follow|%>
-                  <a><%= link_to '#{follow.name}', user_path(id: follow.id) %></a>
+                  <a><%= link_to "#{follow.name}", user_path(id: follow.id) %></a>
               <% end %>
         </div>
       </div>
