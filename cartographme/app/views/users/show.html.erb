@@ -68,4 +68,16 @@
         </div>
       </div>
     </u1>
+    <u1>
+      <% if @current_user == @user then %>
+        <a><% "Sorry, Can't follow yourself"</a>
+      <% else %>
+        <div class="dropdown">
+          <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+            <%= f.submit "Follow", class: "button" %>
+          <% end %>
+        </div>
+      <% end %>
+    </u1>
   </h2>
