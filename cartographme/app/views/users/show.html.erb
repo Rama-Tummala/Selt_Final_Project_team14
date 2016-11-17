@@ -68,7 +68,7 @@
         </div>
       </div>
     </u1>
-    <u1>
+    <u2>
       <div class="dropdown">
       <% if @current_user != @user && @current_user.following.include?(@user) == false then %>
         <%= form_for(@current_user.active_relationships.build, remote: true) do |f| %>
@@ -77,5 +77,5 @@
         <% end %>
       <% end %>
       </div>
-    </u1>
+    </u2>
   </h2>
