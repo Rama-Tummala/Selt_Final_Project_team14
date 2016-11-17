@@ -15,9 +15,20 @@
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Following Stats</button>
+        <button class="dropbtn">Following</button>
         <div class="dropdown-content">
             <% array = @user.following%>
+              <% array = array.uniq%>
+              <% array.each do |follow|%>
+                  <a><%= follow.name %></a>
+              <% end %>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Followers</button>
+        <div class="dropdown-content">
+            <% array = @user.followers%>
               <% array = array.uniq%>
               <% array.each do |follow|%>
                   <a><%= follow.name %></a>
