@@ -4,7 +4,7 @@
     = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button" 
     = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
     = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
-    = button_to "Following", users_following_path(id: => @current_user), :method => :get, :id => 'following_button', :class => "button"
+    = button_to "Following", users_following_path, :method => :get, :id => 'following_button', :class => "button"
     #map{:style => "width:50; height:550px;"}
   -else
     %h2
