@@ -19,7 +19,7 @@
         <div class="dropdown-content a">
             <% array = @user.following%>
               <% array = array.uniq%>
-              <% if array.empty? == true do %>
+              <% if array.empty? == true then %>
                 <a><%= "none" %></a>
               <% else %>
                 <% array.each do |follow|%>
