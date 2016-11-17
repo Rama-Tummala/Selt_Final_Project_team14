@@ -5,10 +5,10 @@
 <script>
 $(document).ready(function(){
     $("#drop").click(function(){
-        $("p").toggle();
+        $("i").toggle();
     });
     $("#drop1").click(function(){
-        $("p").toggle();
+        $("i").toggle();
     });
 });
 </script>
@@ -63,7 +63,7 @@ $(document).ready(function(){
               <% array = array.uniq%>
               <% array.each do |location|%>
                   <a><%= location.name %></a>
-                  <p><%= location.description %></p>
+                  <i><%= location.description %></i> 
               <% end %>
         </div>
       </div>
@@ -76,7 +76,7 @@ $(document).ready(function(){
               <% array.each do |location|%>
                   <% if location.email == @user.email %>
                   <a><%= location.name %></a>
-                  <p><%= location.description %></p>
+                  <i><%= location.description %></i>
                   <% end %>
               <% end %>
         </div>
