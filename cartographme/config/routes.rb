@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   get 'sessions/new'
   get 'users/new'
+  get 'users/following'
   
   post 'home/search_friends'
   post 'users/profile'
