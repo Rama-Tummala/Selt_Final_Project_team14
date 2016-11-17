@@ -17,7 +17,11 @@
       <div class="dropdown">
         <button class="dropbtn">Following Stats</button>
         <div class="dropdown-content">
-            
+            <% array = @user.following%>
+              <% array = array.uniq%>
+              <% array.each do |follow|%>
+                  <a><%= follow.name %></a>
+              <% end %>
         </div>
       </div>
           
