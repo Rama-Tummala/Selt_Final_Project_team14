@@ -19,11 +19,12 @@ class KeyLocationController < ApplicationController
 
     user = User.find_by session_token: session[:session_token]
     key_location = KeyLocation.find_by name: URI.decode(params["location"])
-    
+
     key_location.visitors << user
     flash[:notice] = "Location '#{key_location.name}' marked as visited."
     redirect_to root_url
   end
+  
   def destroy
     #TODO
     flash[:notice] = "TODO"

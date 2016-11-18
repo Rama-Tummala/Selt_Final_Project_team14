@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "Sign up successful! Welcome #{user.email}"
+      flash[:notice] = "Sign up successful! Welcome #{@user.email}"
       redirect_to login_path
     else
       render 'new'
