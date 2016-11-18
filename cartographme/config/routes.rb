@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'home/search_friends'
   post 'users/profile'
   post 'users/following'
+  delete 'users/destroy'
   
   post 'sessions/user_params'
   

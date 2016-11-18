@@ -2,41 +2,41 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
+  let!(:michael) { User.new(:name => "michael", :email => "michael@useremail.com", :password => "password", :password_confirmation => "password") }
+  let!(:archer) { User.new(:name => "archer", :email => "archer@useremail.com", :password => "password", :password_confirmation => "password") }
 
-  describe "GET #new" do
-   
+  describe "GET #create" do
     it 'should call the model method to create the user ' do
       allow(User).to receive(:create).with('Ted,ted@abc.com,123456,123456')
-    post :create,{ :user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}}
-   
+      post :create,{ :user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}}
     end 
-   
-end
-
-it 'should select the Signup page for rendering' do
-      allow(User).to receive(:create)
-     # get :signup, user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-     get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-      expect(response).to render_template('users/new')
-    end 
-  before do
-    @user = users(:michael)
-    @other_user = users(:archer)
   end
   
- 
-  
-  describe "redirect #following if not logged in" do
-    it "should redirect following when not logged in" do
-      get following_user_path(@user)
-      assert_redirected_to login_url
+  describe "GET #show" do
+    it 'should set the desired user' do
+      expect(User).to receive(:find).and_return(michael)
+      get :show, :id => 0
     end
   end
 
-  describe "redirect #followers if not logged in" do
-    it "should redirect followers when not logged in" do
-    get followers_user_path(@user)
-    assert_redirected_to login_url
+  describe "GET #new" do
+    it 'should select the Signup page for rendering' do
+      allow(User).to receive(:create)
+      get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
+      expect(response).to render_template('users/new')
+    end 
+  end
+  
+  describe "DELETE #destroy" do
+    it "destroys the user" do
+      expect{ delete :destroy}.to change(User, :count).by(-1)
+    end
+  end
+  
+  describe "redirect #following if not logged in" do
+    it "should redirect following when not logged in" do
+      get following_user_path(michael)
+      assert_redirected_to login_url
     end
   end
   

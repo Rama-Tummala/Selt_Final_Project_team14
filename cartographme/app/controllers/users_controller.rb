@@ -77,7 +77,5 @@ class UsersController < ApplicationController
   
   def profile
   end
-  def following
-  end
 end
   
