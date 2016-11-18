@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'users/profile'
   post 'users/following'
   
+  post 'sessions/user_params'
   
   resources :users do
     member do

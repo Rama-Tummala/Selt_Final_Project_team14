@@ -31,7 +31,7 @@ RSpec.describe KeyLocationController, type: :controller do
   
   describe "DELETE #destroy" do
     it "destroys the key location" do
-      post :destroy
+      delete :destroy
     end
   end
 end

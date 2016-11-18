@@ -4,7 +4,7 @@ RSpec.describe HomeController, type: :controller do
 
   describe "index places gmap marker" do
     it "returns http success" do
-      post :user
+      post :index
       expect(response).to have_http_status(:success)
     end
     
