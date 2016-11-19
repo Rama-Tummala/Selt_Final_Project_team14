@@ -45,8 +45,6 @@ key_locations = KeyLocation.create([
       }
     ])
 User.create!(name: 'Nhan', email: "ntran93@gmail.com", password:"123456", password_confirmation:"123456")
-User.create!(name: 'Nhan Tran', email: "n@gmail.com", password:"123456", password_confirmation:"123456")
-User.create!(name: 'Nhan Tran-Phan', email: "ntp@gmail.com", password:"123456", password_confirmation:"123456")
 User.create!(name: 'James', email: "james@gmail.com", password:"123456", password_confirmation:"123456")
 User.create!(name: 'Josh', email: "josh@gmail.com", password:"123456", password_confirmation:"123456")
 User.create!(name: 'Jake', email: "jake@gmail.com", password:"123456", password_confirmation:"123456")

@@ -48,7 +48,7 @@ $(document).ready(function(){
                 <a><%= "none" %></a>
               <% else %>
                 <% array.each do |follow|%>
-                  <a><%= link_to "#{follow.name}", user_path(id: follow.id) %></a>
+                  <p><%= link_to "#{follow.name}", user_path(id: follow.id) %></p>
                 <% end %>
               <% end %>
         </div>
@@ -63,7 +63,7 @@ $(document).ready(function(){
                 <a><%= "none" %></a>
               <% else %>
                 <% array.each do |follow|%>
-                  <a><%= link_to "#{follow.name}", user_path(id: follow.id) %></a>
+                  <p><%= link_to "#{follow.name}", user_path(id: follow.id)  %></p>
                 <% end %>
               <% end %>
         </div>
@@ -74,9 +74,13 @@ $(document).ready(function(){
         <div class="dropdown-content">
             <% array = @user.key_locations%>
               <% array = array.uniq%>
-              <% array.each do |location|%>
-                  <a><%= location.name %></a>
-                  <i><%= location.description %></i> 
+              <% if array.empty? == true then %>
+                <a><%= "none" %></a>
+              <% else %>
+                <% array.each do |location|%>
+                    <a><%= location.name %></a>
+                    <i><%= location.description %></i>
+                <% end %>
               <% end %>
         </div>
       </div>
@@ -86,11 +90,22 @@ $(document).ready(function(){
         <div class="dropdown-content">
             <% array = @user.key_locations%>
               <% array = array.uniq%>
+              <% no_rec = false%>
               <% array.each do |location|%>
                   <% if location.email == @user.email %>
-                  <a><%= location.name %></a>
-                  <i><%= location.description %></i>
+                    <% no_rec = true%>
+                    <% if array.empty? == true then %>
+                      <a><%= "none" %></a>
+                    <% else %>
+                      <% array.each do |location|%>
+                          <a><%= location.name %></a>
+                          <i><%= location.description %></i>
+                      <% end %>
+                    <% end %>
                   <% end %>
+              <% end %>
+              <% if no_rec == false%>
+                <a><%= "none" %></a>
               <% end %>
         </div>
       </div>

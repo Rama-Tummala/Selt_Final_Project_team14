@@ -16,7 +16,6 @@ class KeyLocationController < ApplicationController
   end
   
   def assign
-
     user = User.find_by session_token: session[:session_token]
     key_location = KeyLocation.find_by name: URI.decode(params["location"])
 
