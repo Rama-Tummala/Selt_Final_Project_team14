@@ -9,17 +9,24 @@
    end
  end
  
-  Given /^the following key locations have been added to the city:$/ do |key_locations_table|
-     key_locations_table.hashes.each do |location|
-     key_locations = Key_Location.create(
+  Given /^the following key locations have been added to the city$/ do
+     key_locations = KeyLocation.create([
       {
-        lat: location["lat"], 
-        lng: location["lng"],
-        name: location["name"]
-      })
-   end
+        lat: '41.659763', 
+        lng: '-91.532282',
+        name: 'Englert Civic Theatre',
+        email: 'admin',
+        description: "Englert Theatre in Iowa City, Iowa."
+      },
+      {
+        lat: '41.666768',
+        lng: '-91.527106',
+        name: "North Market Park",
+        email: 'admin',
+        description: "North Market Park in IC, IA"
+      }
+    ])
   end
-  
   
   Then /^I should see a map displayed$/ do 
     page.has_css?('div#map')
@@ -29,15 +36,11 @@
   end
   
   Then /^I should see a "(.*?)" marker$/ do|location_name|
-    page.has_content?("Englert Civic Theatre")
+    page.has_content?(location_name)
   end
-  
 
-      
-
-    
     When /^I select a key location from the map$/ do 
-      pending
+      
       Capybara.register_driver :selenium do |app|
         Capybara::Selenium::Driver.new(
           app,

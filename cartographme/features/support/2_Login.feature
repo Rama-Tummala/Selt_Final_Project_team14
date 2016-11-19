@@ -3,7 +3,7 @@ Feature: Allow  user to login
 Background: The user has already been signed in
   
   Given I am on login page 
-  Given I am a register user
+  Given a valid user
   
 Scenario: Successful Login 
   
