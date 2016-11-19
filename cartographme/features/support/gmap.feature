@@ -16,7 +16,7 @@ Scenario:see map from homepage
 Scenario:confirm visit to key location
   When I select a key location from the map
   And I confirm I have visited the location
-  Then I should see the marker change to visited
+  Then I should see "marked as visited."
   
 Scenario:request new key location
   When I right click a point on the map

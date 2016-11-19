@@ -40,7 +40,7 @@
   end
 
     When /^I select a key location from the map$/ do 
-      
+      pending
       Capybara.register_driver :selenium do |app|
         Capybara::Selenium::Driver.new(
           app,
@@ -54,11 +54,6 @@
 
   Given /^I confirm I have visited the location$/ do 
     find_button(id: 'visited_button').click
-  end
-  
-  Then /^I should see the marker change to visited$/ do 
-     pending
-    #TODO: check image uri for visisted marker
   end
   
 

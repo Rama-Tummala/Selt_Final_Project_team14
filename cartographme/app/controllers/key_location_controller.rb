@@ -21,12 +21,12 @@ class KeyLocationController < ApplicationController
 
     key_location.visitors << user
     flash[:notice] = "Location '#{key_location.name}' marked as visited."
-    redirect_to root_url
+    redirect_to home_index_path
   end
   
   def destroy
     #TODO
     flash[:notice] = "TODO"
-    redirect_to root_url
+    redirect_to home_index_path
   end
 end
