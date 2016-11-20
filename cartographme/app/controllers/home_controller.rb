@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     #adds test locations to all Markers will be from locations db when done
       @all_locations = KeyLocation.all
+      //
       @all_markers= Array.new
       @all_locations.each do |loc|
         info_content = loc.getInfoString()
@@ -11,7 +12,6 @@ class HomeController < ApplicationController
           :lat => loc.lat,
           :lng => loc.lng,
           :infowindow => info_content,
-          :icon => "green_dot.png"
         }
        
         @all_markers.push(marker)
