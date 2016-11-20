@@ -18,4 +18,12 @@ Scenario: No/Bad Password
   And I click on the login button
   Then I should see "Invalid email/password combination.Try again"
   
-  
+ 
+ Scenario: Successful Logout
+   When I have entered email with "rama@abc.com" and password with "123456"
+  And I click on the login button
+   Given I am on home page
+   
+   And I click on the Logout button
+  Then I should see "You have logged out"
+    

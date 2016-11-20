@@ -8,6 +8,10 @@ end
     visit signup_path
 end
 
+Given /^I am on home page$/ do
+    visit home_index_path
+end
+
 Given /^that I have gone to the user search page$/ do
   visit users_path
 end
@@ -32,6 +36,10 @@ When /^I have entered email with "([^"]*)" and password with "([^"]*)"$/ do |ema
 When /^I click on the login button$/ do
   click_button 'Log in'
 end
+When /^I click on the Logout button$/ do
+  click_button 'logout'
+end
+
   
  Given /^a valid user$/ do
   @user = User.create!({
