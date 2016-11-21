@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+  if defined?(JasmineRails)
+    mount JasmineRails::Engine => '/specs'
+    mount JasmineFixtureServer => '/spec/javascripts/fixtures'
+  end
+
   root 'home#index'
   get 'home/index'
   get 'sessions/new'

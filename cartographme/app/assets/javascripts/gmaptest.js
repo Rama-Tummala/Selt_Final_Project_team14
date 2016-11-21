@@ -20,27 +20,7 @@ RP1 = {
         });
       
       
-      handler.getMap().addListener('click', function(e) {
-        handler.getMap().panTo(e.latLng);
-      });
-      
-      
-      handler.getMap().addListener('rightclick', function(e) {
-        menu_content = "<div id='content'>"+
-          "<p>Recomend Location</p>"+
-          "<form method='get' action='/home/index' class='button_to'>"+
-            "<label>Location Name<br><input type='text' name='location_name' id='location_name' value='...'></label><br>"+
-            "<label>Description<br><input type='text' name='description' id='description' value='...'></label><br>"+
-            "<label>Latitude<input type='text' name='latitude' id='latitude' value="+e.latLng.lat()+"></label><br>"+
-            "<label>Longitude<input type='text' name='longitude' id='longitude' value="+e.latLng.lng()+"></label><br>"+
-            "<input value='Submit' type='submit' id='recomend_button' />"+
-          "</form>"+
-        "</div>";
-        right_click_menu.setContent(menu_content);
-        right_click_menu.setPosition(e.latLng);
-        right_click_menu.open(handler.getMap());
-        $(document).on('click','#recomend_button',RP1.recomendLocation);
-      });
+      handler.getMap().addListener('rightclick', RP1.addRightClickMenu);
    
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
@@ -81,8 +61,26 @@ RP1 = {
           "infowindow": data
         }
       ]);
+    },
+    addRightClickMenu: function(e){
+       menu_content = "<div id='content'>"+
+          "<p>Recomend Location</p>"+
+          "<form method='get' action='/home/index' class='button_to'>"+
+            "<label>Location Name<br><input type='text' name='location_name' id='location_name' value='...'></label><br>"+
+            "<label>Description<br><input type='text' name='description' id='description' value='...'></label><br>"+
+            "<label>Latitude<input type='text' name='latitude' id='latitude' value="+e.latLng.lat()+"></label><br>"+
+            "<label>Longitude<input type='text' name='longitude' id='longitude' value="+e.latLng.lng()+"></label><br>"+
+            "<input value='Submit' type='submit' id='recomend_button' />"+
+          "</form>"+
+        "</div>";
+        right_click_menu.setContent(menu_content);
+        right_click_menu.setPosition(e.latLng);
+        right_click_menu.open(handler.getMap());
+        $(document).on('click','#recomend_button',RP1.recomendLocation);
     }
     
+    
+
 };
 $(RP1.setup);       // when document ready, run setup code
 
