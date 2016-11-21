@@ -30,7 +30,7 @@ RP1 = {
     recomendLocation: function(){
       
       //validate length of description and location name
-      if($( "input#location_name" ).val().length<3 || $("input#description" ).val().length<3  )
+      if($( "input#" ).val().length<3 || $("input#description" ).val().length<3  )
       {
         $('#content').prepend('<p id="name-lenght" class="invalid-form-warning">Location name and description must be at least 3 characters</p>');
         return (false);
