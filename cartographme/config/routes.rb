@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  if defined?(JasmineRails)
+    mount JasmineRails::Engine => '/specs'
+    mount JasmineFixtureServer => '/spec/javascripts/fixtures'
+  end
+
   root 'home#index'
   get 'home/index'
   post 'key_location/new'
