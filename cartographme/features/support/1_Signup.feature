@@ -1,6 +1,6 @@
 Feature: Allow  user to Signup
 
-Background : Correct page
+Background: Correct page
   Given I am on Signup page
 
 Scenario: Successful Signup

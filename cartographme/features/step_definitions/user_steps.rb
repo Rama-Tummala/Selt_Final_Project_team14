@@ -8,6 +8,10 @@ end
     visit signup_path
 end
 
+Given /^I am on home page$/ do
+    visit home_index_path
+end
+
 Given /^that I have gone to the user search page$/ do
   visit users_path
 end
@@ -19,6 +23,7 @@ When /^I have entered email with "([^"]*)" and password with "([^"]*)"$/ do |ema
     
       end
       
+
  When /^I have entered email with "([^"]*)" and password with "([^"]*)" and name with "([^"]*)" and password_confirmation with "([^"]*)"$/ do |email,pwd,name,pwd_confirm|
      visit signup_path
      fill_in 'user_password', :with=> pwd
@@ -31,8 +36,19 @@ When /^I have entered email with "([^"]*)" and password with "([^"]*)"$/ do |ema
 When /^I click on the login button$/ do
   click_button 'Log in'
 end
+When /^I click on the Logout button$/ do
+  click_button 'logout'
+end
+
   
- 
+ Given /^a valid user$/ do
+  @user = User.create!({
+             :name => "rama",
+             :email => "rama@abc.com",
+             :password => "123456",
+             :password_confirmation => "123456"
+           })
+end
  Then /^I should see "([^"]*)"$/ do |text|
     expect(page).to have_content(text)
  end
@@ -41,7 +57,16 @@ end
   click_button 'Create my account'
 end
   
-  
+Given /^a valid user is logged in$/ do
+  @user = User.create!({
+             :name => "rama",
+             :email => "rama@abc.com",
+             :password => "123456",
+             :password_confirmation => "123456"
+           })
+    
+    click_button 'Log in'
+end
 When /^I add "(.*)" to the search box$/ do |item|
   fill_in 'search', :with => item
 end

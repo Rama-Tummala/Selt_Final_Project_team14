@@ -1,0 +1,113 @@
+<h1> User profile for <%= @user.name %> </h1> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#drop").click(function(){
+        $("i").toggle();
+    });
+    $("#drop1").click(function(){
+        $("i").toggle();
+    });
+});
+</script>
+<h2>
+    <u1>
+      <div class="dropdown">
+      <% if @current_user != @user then %>
+        <% if @current_user.following.include?(@user) then %>
+          <div class="button">Unfollow</div>
+        <% else %>
+          <div class="button">Follow</div>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+    </u1>
+  </h2>
+<h2>
+  <ul>
+      <div class="dropdown">
+        <button class="dropbtn">User Info</button>
+        <div class="dropdown-content">
+          <a>
+              <strong>Name: </strong> <%=@user.name %>
+          </a>
+          <a>
+              <strong>Email: </strong> <%=@user.email %>
+          </a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Following</button>
+        <div class="dropdown-content a">
+            <% array = @user.following%>
+              <% array = array.uniq%>
+              <% if array.empty? == true then %>
+                <a><%= "none" %></a>
+              <% else %>
+                <% array.each do |follow|%>
+                  <p><%= link_to "#{follow.name}", user_path(id: follow.id) %></p>
+                <% end %>
+              <% end %>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn">Followers</button>
+        <div class="dropdown-content">
+            <% array = @user.followers%>
+              <% array = array.uniq%>
+              <% if array.empty? == true then %>
+                <a><%= "none" %></a>
+              <% else %>
+                <% array.each do |follow|%>
+                  <p><%= link_to "#{follow.name}", user_path(id: follow.id)  %></p>
+                <% end %>
+              <% end %>
+        </div>
+      </div>
+          
+      <div class="dropdown">
+        <button class="dropbtn" id="drop">Locations visited</button>
+        <div class="dropdown-content">
+            <% array = @user.key_locations%>
+              <% array = array.uniq%>
+              <% if array.empty? == true then %>
+                <a><%= "none" %></a>
+              <% else %>
+                <% array.each do |location|%>
+                    <a><%= location.name %></a>
+                    <i><%= location.description %></i>
+                <% end %>
+              <% end %>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="dropbtn" id="drop1">Recommended Places</button>
+        <div class="dropdown-content">
+            <% array = @user.key_locations%>
+              <% array = array.uniq%>
+              <% no_rec = false%>
+              <% array.each do |location|%>
+                  <% if location.email == @user.email %>
+                    <% no_rec = true%>
+                    <% if array.empty? == true then %>
+                      <a><%= "none" %></a>
+                    <% else %>
+                      <% array.each do |location|%>
+                          <a><%= location.name %></a>
+                          <i><%= location.description %></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              <% if no_rec == false%>
+                <a><%= "none" %></a>
+              <% end %>
+        </div>
+      </div>
+    </u1>
+  </h2>
