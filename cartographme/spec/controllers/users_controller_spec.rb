@@ -11,6 +11,7 @@ RSpec.describe UsersController, type: :controller do
       post :create, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
      # expect { Account.create(account: acc) }.to change{ Account.count }.by(1)
       expect{User.create('Ted,ted@abc.com,123456,123456')}
+      expect(flash[:notice]).to eq('Sign up successful! Welcome ted@abc.com')
     
     end 
   end
@@ -21,7 +22,14 @@ RSpec.describe UsersController, type: :controller do
      get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
       expect(response).to render_template('users/new')
     end 
- 
+    
+    it 'should redirect to home page for incorrect signup' do
+      allow(User).to receive(:create)
+     # get :signup, user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
+     get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>''}
+      expect(response).to render_template('users/new')
+      
+    end
   
   
   describe "GET #show" do
@@ -38,13 +46,18 @@ RSpec.describe UsersController, type: :controller do
      allow(User).to receive(:create).with('Ted,ted@abc.com,123456,123456')
      post :create, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
       expect{User.create('Ted,ted@abc.com,123456,123456')}
+     #User[:user_id] = michael.email
+     # delete :destroy
+     
      allow(User).to receive(:destroy)
-      expect{User.destroy}.to change{User.count}
+      expect{User.destroy()}
+      expect(flash[:notice]).to eq('User was successfully destroyed.')
     end
   end
   
   describe "redirect #following if not logged in" do
     it "should redirect following when not logged in" do
+     
       get following_user_path(michael)
       assert_redirected_to login_url
     end
