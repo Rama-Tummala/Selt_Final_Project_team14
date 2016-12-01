@@ -94,14 +94,8 @@ $(document).ready(function(){
               <% array.each do |location|%>
                   <% if location.email == @user.email %>
                     <% no_rec = true%>
-                    <% if array.empty? == true then %>
-                      <a><%= "none" %></a>
-                    <% else %>
-                      <% array.each do |location|%>
-                          <a><%= location.name %></a>
-                          <i><%= location.description %></i>
-                      <% end %>
-                    <% end %>
+                    <a><%= location.name %></a>
+                    <i><%= location.description %></i>
                   <% end %>
               <% end %>
               <% if no_rec == false%>
