@@ -7,6 +7,11 @@ class HomeController < ApplicationController
     #adds test locations to all Markers will be from locations db when done
       @all_locations = KeyLocation.all
       @all_markers= Array.new
+    if user != nil
+      @visited_locations = user.key_locations
+      @visited_locations.uniq!
+      @visited_locations.each {|a|puts(a.name)}
+    end
       @all_locations.each do |loc|
         if user != nil
           if loc.email == user.email or loc.email == 'admin'
