@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   before_save {|user| user.email=user.email.downcase}
-  before_save :create_session_token
+  before_create :create_session_token
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
@@ -20,15 +20,21 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
     
+  def User.new_session_token
+    SecureRandom.urlsafe_base64
+  end
   
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
   
   #follow a user
-  def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
+  def follow!(other_user)
+    active_relationships.create!(followed_id: other_user.id)
   end
   
   #unfollow a user
-  def unfollow(other_user)
+  def unfollow!(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
   
@@ -40,7 +46,7 @@ class User < ActiveRecord::Base
   
   private
     def create_session_token
-      self.session_token = SecureRandom.urlsafe_base64
+      self.session_token = User.digest(User.new_session_token)
     end
     
     def self.search(search)

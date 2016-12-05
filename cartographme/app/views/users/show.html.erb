@@ -2,13 +2,14 @@
 <h2>
     <u1>
       <div class="dropdown">
-      <% if @current_user != @user then %>
-        <% if @current_user.following.include?(@user) then %>
-          <div class="button">Unfollow</div>
+      <% if current_user != @user then %>
+        <% if current_user.following.include?(@user) then %>
+          <%= render 'unfollow' %>
         <% else %>
-          <div class="button">Follow</div>
-        <% end %>
-        </div>
+          <%= render 'follow' %>
+          <% end %>
+      <% else %>
+          <a> My Profile</a>
       <% end %>
       </div>
     </u1>
