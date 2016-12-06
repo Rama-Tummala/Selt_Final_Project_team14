@@ -23,8 +23,8 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :relationships,       only: [:create, :destroy]
   resources :sessions
-  resources :relationships, only: [:create, :destroy]
   
   match '/signup', to: 'users#new', via: :get
   match '/login', to: 'sessions#new', via: :get

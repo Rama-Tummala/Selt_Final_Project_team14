@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_and_belongs_to_many :key_locations
-  
+                                  
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -28,17 +28,17 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
-  #follow a user
-  def follow!(other_user)
-    active_relationships.create!(followed_id: other_user.id)
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
   end
-  
-  #unfollow a user
-  def unfollow!(other_user)
+
+  # Unfollows a user.
+  def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
-  
-  #returns true if the current user is following the other user
+
+  # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115044349) do
+ActiveRecord::Schema.define(version: 20161206054152) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
@@ -43,10 +43,6 @@ ActiveRecord::Schema.define(version: 20161115044349) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

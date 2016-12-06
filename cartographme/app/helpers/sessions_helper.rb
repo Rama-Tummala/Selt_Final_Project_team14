@@ -1,14 +1,14 @@
 module SessionsHelper
-  def sign_in(user)
-    session_token = User.new_session_token
-    cookies.permanent[:session_token] = session_token
-    user.update_attribute(:session_token, User.digest(session_token))
-    self.current_user = user
+  # Logs in the given user.
+  def log_in(user)
+    session[:user_id] = user.id
   end
 
-  def signed_in?
+  # Returns true if the user is logged in, false otherwise.
+  def logged_in?
     !current_user.nil?
   end
+  
     def current_user=(user)
     @current_user = user
   end
@@ -21,19 +21,19 @@ module SessionsHelper
   def current_user?(user)
     user == current_user
   end
-  
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to login_path, notice: "Please sign in."
-    end
-  end
 
-  def sign_out
-    current_user.update_attribute(:session_token,
-                                  User.digest(User.session_token))
-    cookies.delete(:session_token)
-    self.current_user = nil
+  # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+  # Logs out the current user.
+  def log_out
+    reset_session 
+    @current_user=nil
   end
 
   def redirect_back_or(default)

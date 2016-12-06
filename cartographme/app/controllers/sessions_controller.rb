@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_filter :set_current_user
   
  def user_params
     params.require(:session).permit(:email, :password)
@@ -11,6 +10,7 @@ class SessionsController < ApplicationController
  def create
   user = User.find_by_email(params[:session][:email])
   if user && user.authenticate(params[:session][:password])
+   log_in user
   #  cookies.permanent[:session_token]= user.session_token
    session[:session_token]=user.session_token
    flash[:notice] = "Login successful! Welcome #{user.email}"
@@ -44,8 +44,7 @@ def create
 =end   
    
   def destroy
-    reset_session 
-    @current_user=nil
+    log_out
     flash[:notice]= 'You have logged out'
     redirect_to home_index_path
   end
