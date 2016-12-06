@@ -1,18 +1,19 @@
+
 <h1> User profile for <%= @user.name %> </h1> 
 <h2>
     <u1>
       <div class="dropdown">
       <% if current_user != @user then %>
         <% if current_user.following.include?(@user) then %>
-          <%= render 'unfollow' %>
+        <%= link_to "unfollow", "/users/test_function" %>
         <% else %>
-          <%= render 'follow' %>
+        <%= link_to "follow", "/pages/follow" %>
           <% end %>
       <% else %>
           <a> My Profile</a>
       <% end %>
       </div>
-    </u1>
+    </u1> 
   </h2>
 <h2>
   <ul>
@@ -155,3 +156,4 @@
       </div>
     </u1>
   </h2>
+  

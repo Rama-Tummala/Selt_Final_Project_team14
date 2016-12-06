@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root 'home#index'
   get 'home/index'
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   post 'users/profile'
   post 'users/following'
   delete 'users/destroy'
+  
+  get 'users/test_function'
   
   post 'sessions/user_params'
   

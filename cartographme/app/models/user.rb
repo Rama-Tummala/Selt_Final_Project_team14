@@ -2,14 +2,6 @@ class User < ActiveRecord::Base
   has_secure_password
   has_and_belongs_to_many :key_locations
   
-  has_many :active_relationships, class_name: "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent: :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
   before_save {|user| user.email=user.email.downcase}
   before_create :create_session_token
   validates :name, presence: true, length: {maximum: 50}
@@ -27,22 +19,6 @@ class User < ActiveRecord::Base
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
-  
-  #follow a user
-  def follow!(other_user)
-    active_relationships.create!(followed_id: other_user.id)
-  end
-  
-  #unfollow a user
-  def unfollow!(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
-  end
-  
-  #returns true if the current user is following the other user
-  def following?(other_user)
-    following.include?(other_user)
-  end
-  
   
   private
     def create_session_token
