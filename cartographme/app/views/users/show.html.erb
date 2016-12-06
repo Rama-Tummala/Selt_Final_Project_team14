@@ -5,10 +5,8 @@
       <% if current_user != @user then %>
         <% if current_user.following.include?(@user) then %>
           <%= render 'unfollow' %>
-          <%= current_user.unfollow(@user) %>
         <% else %>
           <%= render 'follow' %>
-          <%= current_user.follow(@user) %>
           <% end %>
       <% else %>
           <a> My Profile</a>
