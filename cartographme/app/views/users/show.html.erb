@@ -1,19 +1,20 @@
-
 <h1> User profile for <%= @user.name %> </h1> 
 <h2>
     <u1>
       <div class="dropdown">
       <% if current_user != @user then %>
         <% if current_user.following.include?(@user) then %>
-        <%= link_to "unfollow", "/users/test_function" %>
+          <%= render 'unfollow' %>
+          <%= current_user.unfollow(@user) %>
         <% else %>
-        <%= link_to "follow", "/pages/follow" %>
+          <%= render 'follow' %>
+          <%= current_user.follow(@user) %>
           <% end %>
       <% else %>
           <a> My Profile</a>
       <% end %>
       </div>
-    </u1> 
+    </u1>
   </h2>
 <h2>
   <ul>
@@ -30,7 +31,7 @@
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Following</button>
+        <button class="dropbtn">Following (<%= @user.following.count %>)</button>
         <div class="dropdown-content">
           <% array = @user.following%>
           <% array = array.uniq%>
@@ -57,7 +58,7 @@
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Followers</button>
+        <button class="dropbtn">Followers (<%= @user.followers.count %>)</button>
         <div class="dropdown-content">
           
           <% array = @user.followers%>
@@ -83,12 +84,13 @@
           <% end %>
         </div>
       </div>
+         <% array = @user.key_locations%>
+          <% array = array.uniq%>
           
       <div class="dropdown">
-        <button class="dropbtn" id="drop">Locations visited</button>
+        <button class="dropbtn" id="drop">Locations visited (<%= array.length %>)</button>
         <div class="dropdown-content">
-          <% array = @user.key_locations%>
-          <% array = array.uniq%>
+          
           <% if array.length > 2 %>
           <div class="myBox">
               <% if array.empty? == true then %>
@@ -113,10 +115,7 @@
         </div>
       </div>
       
-      <div class="dropdown">
-        <button class="dropbtn" id="drop1">Recommended Places</button>
-        <div class="dropdown-content">
-          <% array = @user.key_locations%>
+      <% array = @user.key_locations%>
           <% array = array.uniq%>
           <% records = 0%>
           <% no_rec = false%>
@@ -127,6 +126,10 @@
                 <% records = records +1 %>
               <% end %>
           <% end %>
+      <div class="dropdown">
+        <button class="dropbtn" id="drop1">Recommended Places (<%= records %>)</button>
+        <div class="dropdown-content">
+          
           
           <% if records > 2 %>
           <div class="myBox">
@@ -156,4 +159,3 @@
       </div>
     </u1>
   </h2>
-  
