@@ -4,12 +4,12 @@
       <div class="dropdown">
       <% if @current_user != @user then %>
         <% if @current_user.following.include?(@user) then %>
-          <%= button_to "Unfollow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'unfollow_button', :class => "btn btn-primary" %>
+          <%= button_to "Unfollow", relationship_path(:user_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "btn btn-warning" %>
         <% else %>
-          <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'unfollow_button', :class => "btn btn-primary" %>
+          <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'follow_button', :class => "btn btn-primary" %>
           <% end %>
       <% else %>
-          <a> My Profile</a>
+          <p><%= button_to "My Profile", @current_user, :class => "btn btn-info" %></p>
       <% end %>
       </div>
     </u1>
