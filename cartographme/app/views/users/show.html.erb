@@ -18,7 +18,7 @@ $(document).ready(function(){
         <% if @current_user.following.include?(@user) then %>
           <!--%= button_to 'Unfollow', relationship_path(id: @user.id, followed_id: @user.id), action: :destroy%-->
           <!--%= button_to "Unfollow", { relationship_path, :action => "destroy"} %-->
-          <%= button_to "Unfollow", relationship_path(:followed_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "button" %>
+          <%= button_to "Unfollow", relationship_path(:user_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "button" %>
         <% else %>
           <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'unfollow_button', :class => "button" %>
         <% end %>
