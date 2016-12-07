@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
 
   protected
- # @current_user ||= User.find_by_session_token(cookies[:session_token])
- 
   def set_current_user
       
     @current_user ||= session[:session_token]&& User.find_by_session_token(session[:session_token])

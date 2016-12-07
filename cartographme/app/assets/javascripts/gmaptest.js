@@ -88,9 +88,6 @@ RP1 = {
         right_click_menu.open(handler.getMap());
         $(document).on('click','#recomend_button',RP1.recomendLocation);
     }
-    
-    
-
 };
 $(RP1.setup);       // when document ready, run setup code
 
