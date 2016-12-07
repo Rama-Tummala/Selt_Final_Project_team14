@@ -9,7 +9,7 @@
           <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'follow_button', :class => "btn btn-primary" %>
           <% end %>
       <% else %>
-          <p><%= button_to "My Profile", @current_user, :class => "btn btn-info" %></p>
+          <button type="button" class= "btn btn-info">My Profile</button>
       <% end %>
       </div>
     </u1>

@@ -9,10 +9,6 @@ RP1 = {
           content: ""
         });
       
-<<<<<<< HEAD
-      
-      handler.getMap().addListener('rightclick', RP1.addRightClickMenu);
-=======
       handler.getMap().addListener('click', function(e) {
         handler.getMap().panTo(e.latLng);
       });
@@ -34,7 +30,6 @@ RP1 = {
         right_click_menu.open(handler.getMap());
         $(document).on('click','#recomend_button',RP1.recomendLocation)
       });
->>>>>>> 844961666cf621de283e36dc5fa456c7fdfc92fd
    
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();

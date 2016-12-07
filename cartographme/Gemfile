@@ -60,7 +60,7 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
 
-  gem "factory_girl_rails", "~> 4.0"
+
 end
 
 group :development do
