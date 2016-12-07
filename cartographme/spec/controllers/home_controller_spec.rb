@@ -29,16 +29,6 @@ RSpec.describe HomeController, type: :controller do
       expect(assigns(:all_markers)).to eql([])
     end
     
-    it "assigns green marker if location is visited" do
-      get :index
-      expect(KeyLocation).to receive(:all).and_return(keyLocation)
-      expect(assigns(:all_markers)).not_to be_empty
-    end
-    
-    it "assigns red marker if location has not been visited" do
-      post :index
-    end
-    
     it "has non empty locations" do
       post :index
       expect(KeyLocation).to receive(:all).and_return([keyLocation])
