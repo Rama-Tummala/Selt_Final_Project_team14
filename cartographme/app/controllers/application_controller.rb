@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   before_filter :set_current_user
+
   protected
  # @current_user ||= User.find_by_session_token(cookies[:session_token])
  
@@ -18,4 +19,5 @@ class ApplicationController < ActionController::Base
   end  
   
   helper_method :current_user
+  
 end

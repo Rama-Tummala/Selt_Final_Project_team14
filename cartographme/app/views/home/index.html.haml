@@ -1,6 +1,6 @@
 / Home page
 %table 
-  -if signed_in?
+  -if @current_user
     = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
     = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
     = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button"

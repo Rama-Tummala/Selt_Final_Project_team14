@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-    #before_action :signed_in_user
+    #before_action :logged_in_user
     before_action :set_current_user
     
     def create
