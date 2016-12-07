@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  cattr_accessor :current_user
   has_secure_password
   has_and_belongs_to_many :key_locations
   
@@ -22,7 +23,14 @@ class User < ActiveRecord::Base
     
   def self.find_by_email(*args) 
     super
-    end
+  end
+  def User.new_session_token
+    SecureRandom.urlsafe_base64
+  end
+  
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
   
   #follow a user
   def follow(other_user)
@@ -38,7 +46,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
-  
   
   private
     def create_session_token
