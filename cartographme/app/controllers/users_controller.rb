@@ -8,6 +8,36 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @all_locations = KeyLocation.all
+    @all_markers= Array.new
+    puts(ActionController::Base.helpers.image_url('green_dot.png'))
+    if @user != nil
+      @visited_locations = @user.key_locations
+      @visited_locations.uniq!
+      @visited_locations.each {|a|puts(a.name)}
+    end
+      @all_locations.each do |loc|
+        if @user != nil
+          if loc.email == @user.email or loc.email == 'admin'
+            if( @visited_locations.include?(loc) )
+              marker_icon =  ActionController::Base.helpers.image_url('green_dot.png')
+              info_content = loc.getVisitedInfoString()
+            else
+              marker_icon =  ActionController::Base.helpers.image_url('red_dot.png')
+              info_content = loc.getInfoString()
+            end
+            marker={
+              :lat => loc.lat,
+              :lng => loc.lng,
+              :infowindow => info_content,
+              :picture => { :url=>marker_icon, :width => 20, :height => 20 },
+            }
+            @all_markers.push(marker)
+          end
+        end
+      end
+    gon.allMarkers = @all_markers
+    gon.markerUnvisitedIcon = { :url=> ActionController::Base.helpers.image_url('red_dot.png'), :width => 20, :height => 20 }
   end
 
   def new
