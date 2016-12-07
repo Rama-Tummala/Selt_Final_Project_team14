@@ -16,9 +16,11 @@ $(document).ready(function(){
       <div class="dropdown">
       <% if @current_user != @user then %>
         <% if @current_user.following.include?(@user) then %>
-          <%= button_to 'Unfollow', relationships_path(id: @user.id, followed_id: @user.id), method: :destroy, action: :destroy%>
+          <!--%= button_to 'Unfollow', relationship_path(id: @user.id, followed_id: @user.id), action: :destroy%-->
+          <!--%= button_to "Unfollow", { relationship_path, :action => "destroy"} %-->
+          <%= button_to "Unfollow", relationship_path(:followed_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "button" %>
         <% else %>
-          <div class="button">Follow</div>
+          <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'unfollow_button', :class => "button" %>
         <% end %>
         </div>
       <% end %>
