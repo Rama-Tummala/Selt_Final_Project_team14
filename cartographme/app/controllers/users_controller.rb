@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      sign_in @user
       flash[:notice] = "Sign up successful! Welcome #{@user.email}"
       redirect_to login_path
     else
@@ -63,12 +62,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
-  end
-  
-  def test_function
-    @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'test_function'
   end
   
   #private

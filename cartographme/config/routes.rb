@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   post 'users/following'
   delete 'users/destroy'
   
-  get 'users/test_function'
-  
   post 'sessions/user_params'
   
   resources :users do
