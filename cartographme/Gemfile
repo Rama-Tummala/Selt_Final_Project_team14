@@ -60,6 +60,7 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
 
+
 end
 
 group :development do
@@ -75,6 +76,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
 
+  gem 'assert_difference'
 end
 
 group :production do

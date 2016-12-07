@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
-require 'factory_girl'
+#require 'factory_girl'
 
 
 RSpec.describe SessionsController, type: :controller do
