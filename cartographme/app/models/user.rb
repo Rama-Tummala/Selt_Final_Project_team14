@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  cattr_accessor :current_user
   has_secure_password
   has_and_belongs_to_many :key_locations
   
@@ -20,19 +21,12 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
     
-  def change
-    create_table :users, force: :cascade do |t|
-      t.string   "name"
-      t.string   "email"
-      t.string   "session_token"
-      t.string   "password_digest"
-      t.string   "home_city"
-      t.string   "recommended_places"
-      t.string   "places_visited"
-      t.string   "following"
-      t.datetime "created_at", null: false
-      t.datetime "updated_at", null: false
-      end
+  def User.new_session_token
+    SecureRandom.urlsafe_base64
+  end
+  
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
   end
   
   #follow a user
@@ -49,7 +43,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
-  
   
   private
     def create_session_token

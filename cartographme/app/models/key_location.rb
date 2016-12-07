@@ -15,6 +15,14 @@ class KeyLocation < ActiveRecord::Base
         </div>"
     
   end
+  
+  def getVisitedInfoString()
+      contentString="
+      <div class='marker_content'>
+        <p>#{name}</p>
+        <p>Visited</p>
+      </div>"
+  end
 
 end
 

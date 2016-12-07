@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       render 'new'
     end  
   end
-
+=begin
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+=end  
   def following
     @title = "Following"
     @user = User.find(params[:id])
@@ -78,4 +78,3 @@ class UsersController < ApplicationController
   def profile
   end
 end
-  

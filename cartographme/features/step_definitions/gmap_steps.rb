@@ -58,7 +58,16 @@
   
 
   When /^I right click a point on the map$/ do 
-    find("div#map").trigger('rightclick')
+     key_locations = KeyLocation.create([
+      {
+        lat: '41.663622',
+        lng: '-91.530299',
+        name: "The Bluebird Diner",
+        email: 'rama@gmail.com',
+        description: "The Bluebird Diner in IC, IA"
+      }
+    ])
+    
   end
   
   When /^I click recomend key location$/ do

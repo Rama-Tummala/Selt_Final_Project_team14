@@ -9,7 +9,7 @@ class KeyLocationController < ApplicationController
        :email => user.email
       })
     @new_marker = {:name => params["name"],:infoWindow => new_location.getInfoString(), :description => params["description"], :lat => params["lat"], :lng => params["lng"]}
-    flash[:notice] = "Location '#{new_location.name}' marked as recommended."
+    flash[:notice] = "Location '#{new_location.name}' marked as recommended and visited."
     new_location.recommenders << user
     
     render(:partial => "new", locals: {new_marker: @new_marker} )
