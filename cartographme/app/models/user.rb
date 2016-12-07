@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
     
+  def self.find_by_email(*args) 
+    super
+  end
   def User.new_session_token
     SecureRandom.urlsafe_base64
   end
