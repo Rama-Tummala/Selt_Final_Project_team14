@@ -30,7 +30,7 @@ RSpec.describe HomeController, type: :controller do
     end
     
     it "assigns green marker if location is visited" do
-      post :index
+      get :index
       expect(KeyLocation).to receive(:all).and_return(keyLocation)
       expect(assigns(:all_markers)).not_to be_empty
     end
@@ -39,7 +39,7 @@ RSpec.describe HomeController, type: :controller do
       post :index
     end
     
-    it "has an non empty locations" do
+    it "has non empty locations" do
       post :index
       expect(KeyLocation).to receive(:all).and_return([keyLocation])
       expect(assigns(:all_locations)).not_to be_empty
