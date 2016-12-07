@@ -4,23 +4,32 @@ RP1 = {
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(gon.allMarkers);
       
-        var menu_content = "<div id='content'>"+
-          "<p>Englert Civic Theatre</p>"+
-          "<form method='get' action='/home/index' class='button_to'>"+
-            "<input type='text' name='Location Name' value='...'><br>"+
-            "<input type='text' name='Description' value='...'><br>"+
-            "<input type='hidden' name='Longitude' value='...'><br>"+
-            "<input type='hidden' name='Latitude' value='...'><br>"+
-            "<input value='TEST Button' type='submit' />"+
-          "</form>"+
-        "</div>";
-        
+
         right_click_menu = new google.maps.InfoWindow({
-          content: menu_content
+          content: ""
         });
       
+      handler.getMap().addListener('click', function(e) {
+        handler.getMap().panTo(e.latLng);
+      });
       
-      handler.getMap().addListener('rightclick', RP1.addRightClickMenu);
+      
+      handler.getMap().addListener('rightclick', function(e) {
+        var menu_content = "<div id='content'>"+
+          "<p>Recommend Location</p>"+
+          "<form method='get' action='/home/index' class='button_to'>"+
+            "<label>Location Name<br><input type='text' name='location_name' id='location_name' value='...'></label><br>"+
+            "<label>Description<br><input type='text' name='description' id='description' value='...'></label><br>"+
+           "<input type='hidden' name='latitude' id='latitude' value="+e.latLng.lat()+"></label>"+
+            "<input type='hidden' name='longitude' id='longitude' value="+e.latLng.lng()+"></label>"+
+            "<input value='Submit' type='submit' id='recomend_button' />"+
+          "</form>"+
+        "</div>";
+        right_click_menu.setContent(menu_content);
+        right_click_menu.setPosition(e.latLng);
+        right_click_menu.open(handler.getMap());
+        $(document).on('click','#recomend_button',RP1.recomendLocation)
+      });
    
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
@@ -58,7 +67,8 @@ RP1 = {
         {
           "lat": latData,
           "lng": lngData,
-          "infowindow": data
+          "infowindow": data,
+          "picture": gon.markerUnvisitedIcon
         }
       ]);
     },
