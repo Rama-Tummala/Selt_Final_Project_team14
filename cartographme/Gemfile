@@ -54,16 +54,13 @@ group :development, :test do
   gem 'sqlite3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-<<<<<<< HEAD
  # gem "factory_girl_rails", "~> 4.0"
  
   #js testing
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
 
-=======
- gem "factory_girl_rails", "~> 4.0"
->>>>>>> 13d0e770d282a73867d41eb536230ae41847ec65
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
@@ -78,11 +75,8 @@ group :test do
      
   gem 'capybara'
   gem 'database_cleaner'
-<<<<<<< HEAD
-  gem 'assert_difference'
-=======
 
->>>>>>> master
+  gem 'assert_difference'
 end
 
 group :production do
