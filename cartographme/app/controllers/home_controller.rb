@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     user = User.find_by session_token: session[:session_token]
     #adds test locations to all Markers will be from locations db when done
       @all_locations = KeyLocation.all
+      //
       @all_markers= Array.new
     
     if user != nil
