@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe KeyLocationController, type: :controller do
 
   let!(:user) { User.new(:name => "User", :email => "user@useremail.com", :password => "password", :password_confirmation => "password") }
-  let!(:keyLocation) {KeyLocation.new(:name => "Kinnick Stadium")}
+  let!(:keyLocation) {KeyLocation.new(:name => "Kinnick Stadium",:lat => "200",:lng => "100",:description=>"description",:email=>"admin")}
 
   describe "GET #new" do
     it "returns http success" do
       expect(User).to receive(:find_by).and_return(user)
-      get :new, {"name" => "IMU" , "lat" => 200, "lng" => 100, "description" => "Iowa Memorial Union, Iowa City, IA"}
+      get :new, {"name" => "IMU" , "lat" => 200, "lng" => 100, "description" => "Iowa Memorial Union, Iowa City, IA", "email"=>"admin"}
       expect(response).to have_http_status(:success)
     end
     
@@ -28,9 +28,4 @@ RSpec.describe KeyLocationController, type: :controller do
     end
   end
   
-  describe "DELETE #destroy" do
-    it "destroys the key location" do
-      delete :destroy
-    end
-  end
 end
