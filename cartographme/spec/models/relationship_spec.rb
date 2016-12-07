@@ -1,22 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
+  
   before do
-    @relationship = Relationship.new(follower_id: users(:jake).user_id,
-                                     followed_id: users(:nhan).user_id)
+    @relationship = Relationship.new(follower_id: 0,
+                                     followed_id: 1)
   end
 
   it "should be valid" do
-    @relationship.valid?.should.not == nil
+    expect(@relationship).to be_valid
   end
 
   it "should require a follower_id" do
     @relationship.follower_id = nil
-    assert_not @relationship.valid?
+    expect(@relationship).to be_invalid
   end
 
   it "should require a followed_id" do
     @relationship.followed_id = nil
-    assert_not @relationship.valid?
+    expect(@relationship).to be_invalid
   end
 end

@@ -14,33 +14,23 @@ RSpec.describe UsersController, type: :controller do
       expect(flash[:notice]).to eq('Sign up successful! Welcome ted@abc.com')
     
     end 
-  
+  end
   
   it 'should select the Signup page for rendering' do
-      allow(User).to receive(:create).with('Ted,ted@abc.com,123456,123456')
+      allow(User).to receive(:create)
      # get :signup, user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-     post :create,  :user =>  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-      expect(response).to redirect_to(login_path)
-  end 
-   
+     get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
+      expect(response).to render_template('users/new')
+    end 
+    
     it 'should redirect to home page for incorrect signup' do
       allow(User).to receive(:create)
      # get :signup, user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-     post :create, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>''}
+     get :new,  {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>''}
       expect(response).to render_template('users/new')
       
     end
-    
-    it 'should select new page' do
-      allow(User).to receive(:new)
-     # get :signup, user => {:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
-     get :new, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>''}
-      
-      
-    end
-    
-    
-  end
+  
   
   describe "GET #show" do
     it 'should set the desired user' do
@@ -51,19 +41,19 @@ RSpec.describe UsersController, type: :controller do
 
   
   
- # describe "DELETE #destroy" do
- #   it "destroys the user" do
- #    allow(User).to receive(:create).with('Ted,ted@abc.com,123456,123456')
- #    post :create, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
- #     expect{User.create('Ted,ted@abc.com,123456,123456')}
+  describe "DELETE #destroy" do
+    it "destroys the user" do
+     allow(User).to receive(:create).with('Ted,ted@abc.com,123456,123456')
+     post :create, :user =>{:name =>'Ted',:email =>'ted@abc.com',:password =>'123456',:password_confirmation =>'123456'}
+      expect{User.create('Ted,ted@abc.com,123456,123456')}
      #User[:user_id] = michael.email
      # delete :destroy
      
-#     allow(User).to receive(:destroy)
-#      expect{User.destroy()}
-#      expect(flash[:notice]).to eq('User was successfully destroyed.')
-#    end
-#  end
+     allow(User).to receive(:destroy)
+      expect{User.destroy()}
+      expect(flash[:notice]).to eq('User was successfully destroyed.')
+    end
+  end
   
   describe "redirect #following if not logged in" do
     it "should redirect following when not logged in" do
