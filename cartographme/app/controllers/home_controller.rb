@@ -16,18 +16,19 @@ class HomeController < ApplicationController
       @all_locations.each do |loc|
         if user != nil
           if loc.email == user.email or loc.email == 'admin'
+            puts("hey")
             if( @visited_locations.include?(loc) )
-              marker_icon =  ActionController::Base.helpers.image_url('green_dot.png')
+              @marker_icon =  ActionController::Base.helpers.image_url('green_dot.png')
               info_content = loc.getVisitedInfoString()
             else
-              marker_icon =  ActionController::Base.helpers.image_url('red_dot.png')
+              @marker_icon =  ActionController::Base.helpers.image_url('red_dot.png')
               info_content = loc.getInfoString()
             end
             marker={
               :lat => loc.lat,
               :lng => loc.lng,
               :infowindow => info_content,
-              :picture => { :url=>marker_icon, :width => 20, :height => 20 },
+              :picture => { :url=>@marker_icon, :width => 20, :height => 20 },
             }
             @all_markers.push(marker)
           end
