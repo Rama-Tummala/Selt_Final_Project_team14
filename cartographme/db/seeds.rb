@@ -61,3 +61,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each {|followed| user.follow(followed)}
 followers.each {|follower| follower.follow(user)}
+
+key_location = KeyLocation.find_by name: "Old Capitol Museum"
+key_location.visitors << user
+
+visited = users[1..50]
+visited.each {|user_var| key_location.visitors << user_var}
