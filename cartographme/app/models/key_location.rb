@@ -25,7 +25,3 @@ class KeyLocation < ActiveRecord::Base
   end
 
 end
-
-#<form method='delete' action='key_location/destroy' class='button_to'>
-#            <input value='Delete' type='submit', id='delete_button'/>
-#          </form>

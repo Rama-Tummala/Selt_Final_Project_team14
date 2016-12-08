@@ -24,13 +24,6 @@ class User < ActiveRecord::Base
   def self.find_by_email(*args) 
     super
   end
-  def User.new_session_token
-    SecureRandom.urlsafe_base64
-  end
-  
-  def User.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
   
   #follow a user
   def follow(other_user)
