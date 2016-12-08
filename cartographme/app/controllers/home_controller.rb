@@ -6,9 +6,8 @@ class HomeController < ApplicationController
     user = User.find_by session_token: session[:session_token]
     #adds test locations to all Markers will be from locations db when done
       @all_locations = KeyLocation.all
-      //
       @all_markers= Array.new
-    
+    puts(ActionController::Base.helpers.image_url('green_dot.png'))
     if user != nil
       @visited_locations = user.key_locations
       @visited_locations.uniq!

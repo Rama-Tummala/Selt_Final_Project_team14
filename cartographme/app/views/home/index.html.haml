@@ -1,7 +1,12 @@
 / Home page
-%table 
+
+%link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+%script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+%script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+
+%table
   -if @current_user
-    = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button" 
+    = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button"
     = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
     = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button"
     #div{:class => "card"}
