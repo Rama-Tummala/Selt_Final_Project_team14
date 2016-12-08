@@ -39,6 +39,7 @@
     page.has_content?(location_name)
   end
 
+=begin
     When /^I select a key location from the map$/ do 
       pending
       Capybara.register_driver :selenium do |app|
@@ -56,6 +57,7 @@
     find_button(id: 'visited_button').click
   end
   
+
 
   When /^I right click a point on the map$/ do 
      key_locations = KeyLocation.create([
@@ -79,3 +81,4 @@
     #TODO check page content for location add
   end
   
+=end

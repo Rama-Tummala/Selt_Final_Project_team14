@@ -10,17 +10,7 @@ Background:setup key locations
   
 Scenario:see map from homepage
   Then I should see a map displayed
-  And I should see a "Englert Civic Theatre" marker
-  And I should see a "North Market Park" marker
-  
-Scenario:confirm visit to key location
-  When I select a key location from the map
-  And I confirm I have visited the location
-  Then I should see "marked as visited."
-  
-Scenario:request new key location
-  When I right click a point on the map
-  And I click recomend key location  
-  Then I should see a confirmation the location has been recomended
-  
+  Then I should see a "Englert Civic Theatre" marker
+  Then I should see a "North Market Park" marker
+
   
