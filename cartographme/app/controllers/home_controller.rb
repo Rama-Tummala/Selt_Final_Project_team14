@@ -37,7 +37,7 @@ class HomeController < ApplicationController
         
       end
     gon.allMarkers = @all_markers
-    gon.markerUnvisitedIcon = { :url=> ActionController::Base.helpers.image_url('red_dot.png'), :width => 20, :height => 20 }
+    gon.markerVisitedIcon = { :url=> ActionController::Base.helpers.image_url('green_dot.png'), :width => 20, :height => 20 }
     
   end
   

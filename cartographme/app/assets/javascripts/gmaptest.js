@@ -15,7 +15,7 @@ RP1 = {
       
       
       handler.getMap().addListener('rightclick', function(e) {
-        var menu_content = "<div id='content'>"+
+        var menu_content = "<div id='right_click_content'>"+
           "<h2>Recommend Location <span class='glyphicon glyphicon-map'></span></h2>"+
           "<form method='get' action='/home/index' class='button_to'>"+
             "<label>Location Name<br><input type='text' name='location_name' id='location_name' placeholder='Please enter location' required></label><br>"+
@@ -41,13 +41,15 @@ RP1 = {
       //validate length of description and location name
       if($( "input#location_name" ).val().length<3 || $("input#description" ).val().length<3  )
       {
-        $('#content').prepend('<p id="name-length" class="invalid-form-warning">Location name and description must be at least 3 characters</p>');
+        if($('.invalid-form-warning').length==0)
+        {
+          $('#right_click_content').prepend('<p class="invalid-form-warning">Location name and description</p><p class="invalid-form-warning"> must be at least 3 characters</p>');
+        }
         return (false);
       }
       else
       {
         $('.invalid-form-warning').hide();
-        
       }
         
       
@@ -64,14 +66,21 @@ RP1 = {
     successfullRecomendation: function(data,requestStatus,xhrObject){
       var lngData = $(data).find("li#lng").attr("value");
       var latData = $(data).find("li#lat").attr("value");
+      var regex = /(<div id='content'>[\s\S]*<\/div>)/;
+      var content_div = regex.exec(data);
+      var final_html = content_div[0].replace(/"/g,"");
       handler.addMarkers([
         {
           "lat": latData,
           "lng": lngData,
-          "infowindow": data,
-          "picture": gon.markerUnvisitedIcon
+          "infowindow": final_html,
+          "picture": gon.markerVisitedIcon
         }
       ]);
+      if($('#notice').length==0)
+      {
+        $('#main').prepend('<p id="notice">Location recomended successfully and visited.</p>');
+      }
     }
 };
 $(RP1.setup);       // when document ready, run setup code
