@@ -20,7 +20,7 @@ class KeyLocation < ActiveRecord::Base
       contentString="
       <div class='marker_content'>
         <h2>#{name}</h2>
-        <button type='button' class='btn btn-link'>Visited</button>
+        <button type='button' class='btn btn-link'>Visited!</button>
       </div>"
   end
 
