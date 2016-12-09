@@ -5,7 +5,6 @@ RSpec.describe RelationshipsController, type: :controller do
     
     let!(:john) { User.new(:id => 20, :name => "John", :email => "john@useremail.com", :password => "password", :password_confirmation => "password") }
     let!(:jane) { User.new(:id => 10, :name => "Jane", :email => "jane@useremail.com", :password => "password", :password_confirmation => "password") }
-    let!(:relation) {Relationship.new(:follower_id => 20, :followed_id => 10)}
     
     it "create should require logged-in user" do
         expect(User).to receive(:find).and_return(john)
