@@ -20,28 +20,6 @@ class SessionsController < ApplicationController
    render 'new'
   end
  end 
- 
-=begin 
-def create
-    
- #    @user_temp = User.new(user_params)
-    puts %%%
-    puts user_params
-    
-    @temp = User.find_by_email(@user_temp[:email])
-    puts ####
-    puts @temp
-    puts ####
-   # if (@temp.present? && @temp.password == user_params[:password])
-      if @temp.present?
-    flash[:notice]=" You are logged in as #{@temp.user_id}." 
-    session[:session_token]=@temp.session_token
-    redirect_to home_index_path   
-     else
-     flash[:warning] = "Invalid user-id/email"
-    render 'new'
-   end
-=end   
    
   def destroy
     reset_session 

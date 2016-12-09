@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <h1> User profile for <%= @user.name %> </h1> 
 <h2>
     <u1>
@@ -17,7 +21,7 @@
 <h2>
   <ul>
       <div class="dropdown">
-        <button class="dropbtn">User Info</button>
+        <button class="dropbtn"> <span class="glyphicon glyphicon-user"> </span> User Info</button>
         <div class="dropdown-content">
           <a>
               <strong>Name: </strong> <%=@user.name %>
@@ -29,7 +33,7 @@
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Following (<%= @user.following.count %>)</button>
+        <button class="dropbtn"> <span class="glyphicon glyphicon-eye-open"> </span> Following (<%= @user.following.count %>)</button>
         <div class="dropdown-content">
           <% array = @user.following%>
           <% array = array.uniq%>
@@ -56,7 +60,7 @@
       </div>
       
       <div class="dropdown">
-        <button class="dropbtn">Followers (<%= @user.followers.count %>)</button>
+        <button class="dropbtn"> <span class="glyphicon glyphicon-sunglasses"> </span> Followers (<%= @user.followers.count %>)</button>
         <div class="dropdown-content">
           
           <% array = @user.followers%>
@@ -86,7 +90,8 @@
           <% array = array.uniq%>
           
       <div class="dropdown">
-        <button class="dropbtn" id="drop">Locations visited (<%= array.length %>)</button>
+        <button class="dropbtn" id="drop"> <span class="glyphicon glyphicon-road"> </span> 
+        Locations visited (<%= array.length %>)</button>
         <div class="dropdown-content">
           
           <% if array.length > 2 %>
@@ -125,7 +130,8 @@
               <% end %>
           <% end %>
       <div class="dropdown">
-        <button class="dropbtn" id="drop1">Recommended Places (<%= records %>)</button>
+        <button class="dropbtn" id="drop1"> <span class="glyphicon glyphicon-map-marker"> </span>
+        Recommended Places (<%= records %>)</button>
         <div class="dropdown-content">
           
           

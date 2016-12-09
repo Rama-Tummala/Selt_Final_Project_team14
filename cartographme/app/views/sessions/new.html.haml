@@ -1,3 +1,7 @@
+
+%link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+%script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+%script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
 %h2
   %p.login=link_to 'Sign_up for Cartographme',signup_path
 
@@ -7,9 +11,12 @@
   = form_tag sessions_path, :method => 'post' do
 
     = label :session, :user, 'Email'
+    %br
     = text_field :session, 'email'
+    %br
 
     = label :session, :password, 'Password'
+    %br
     = password_field :session, 'password'
 
     %h2

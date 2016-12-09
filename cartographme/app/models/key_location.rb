@@ -7,10 +7,10 @@ class KeyLocation < ActiveRecord::Base
   def getInfoString()
     contentString="
         <div id='content'>
-          <p>#{name}</p>
+          <h2>#{name}</h2>
           <form method='post' action='/key_location/assign' class='button_to'>
             <input type='hidden' name='location' value=#{URI.encode(name)}><br>
-            <input value='Mark as visited' type='submit', id='visited_button'/>
+            <input value='Mark as visited' type='submit', id='visited_button' class='btn btn-success'/>
           </form>
         </div>"
     
@@ -19,13 +19,9 @@ class KeyLocation < ActiveRecord::Base
   def getVisitedInfoString()
       contentString="
       <div class='marker_content'>
-        <p>#{name}</p>
-        <p>Visited</p>
+        <h2>#{name}</h2>
+        <button type='button' class='btn btn-link'>Visited!</button>
       </div>"
   end
 
 end
-
-#<form method='delete' action='key_location/destroy' class='button_to'>
-#            <input value='Delete' type='submit', id='delete_button'/>
-#          </form>
