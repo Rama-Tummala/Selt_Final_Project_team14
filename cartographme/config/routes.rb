@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   
   post 'sessions/user_params'
   
+  delete 'relationships/destroy'
+  
   resources :users do
     member do
       get :following, :followers
