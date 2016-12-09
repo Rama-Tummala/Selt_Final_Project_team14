@@ -3,7 +3,8 @@
 %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
 %script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
 %h2
-  %p.login=link_to 'Sign_up for Cartographme',signup_path
+  %p
+    = link_to 'Sign_up for Cartographme',signup_path, :class => "btn btn-link"
 
 %h1 Log-in: 
 
@@ -20,4 +21,6 @@
     = password_field :session, 'password'
 
     %h2
-      = submit_tag 'Log in', :class => "button" 
+      = button_tag type: "submit", :name => nil, :class => "button" do
+        Log in
+        %span(class="glyphicon glyphicon-log-in")

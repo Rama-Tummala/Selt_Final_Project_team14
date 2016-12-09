@@ -8,12 +8,20 @@
       <div class="dropdown">
       <% if @current_user != @user then %>
         <% if @current_user.following.include?(@user) then %>
-          <%= button_to "Unfollow", relationship_path(:user_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "btn btn-warning" %>
+          <%= button_to relationship_path(:user_id => @user.id), :method => :delete, :id => 'unfollow_button', :class => "btn btn-warning" do %>
+            Unfollow
+            <span class="glyphicon glyphicon-minus-sign"> </span>
+          <% end %>
         <% else %>
-          <%= button_to "Follow", relationships_path(:followed_id => @user.id), :method => :create, :id => 'follow_button', :class => "btn btn-primary" %>
+          <%= button_to relationships_path(:followed_id => @user.id), :method => :create, :id => 'follow_button', :class => "btn btn-primary" do %>
+            Follow
+            <span class="glyphicon glyphicon-plus-sign"> </span>
+          <% end %>
           <% end %>
       <% else %>
-          <button type="button" class= "btn btn-info">My Profile</button>
+          <button type="button" class= "btn btn-info">
+          My Profile <span class="glyphicon glyphicon-star"> </span>
+          </button>
       <% end %>
       </div>
     </u1>
@@ -44,6 +52,7 @@
               <% else %>
                 <% array.each do |follow|%>
                   <p><%= link_to "#{follow.name}", user_path(id: follow.id) %></p>
+                  
                 <% end %>
               <% end %>
           </div>

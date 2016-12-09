@@ -10,10 +10,14 @@
     = csrf_meta_tags
     
   %body
-    %h1.title Cartographme
+    %h1.title
+      Cartographme
+      %span(class="glyphicon glyphicon-map-marker")
     #main
       %h2
-        = button_to "Home", root_url, :method => :get, :id => 'home_button', :class => "button" 
+        = link_to root_url, :method => :get, id: 'home_button', class: "button" do
+          %span(class="glyphicon glyphicon-home")
+       
       - if flash[:notice]
         #notice.flash_message= flash[:notice]
       - elsif flash[:warning]

@@ -83,6 +83,7 @@ textarea {
 	padding:16px 31px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
+	margin: 0 auto;
 }
 .button:hover {
 	background-color:#91d96a;
@@ -435,4 +436,13 @@ border-radius: 10px;
 
 ::-webkit-scrollbar-thumb:hover {
 background: #88ba1c;  
+}
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
 }

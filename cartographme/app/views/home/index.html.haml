@@ -4,14 +4,26 @@
 %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
 %script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
 
-%table
+
+#outer
   -if @current_user
-    = button_to 'My Profile', @current_user, :method => :get, :id => 'profile_button', :class => "button"
-    = button_to "Search Users", users_path, :method => :get, :id => 'search_button', :class => "button" 
-    = button_to 'Logout', logout_path , :method => :delete , :id => 'logout', :class => "button"
+    .inner
+      = button_to @current_user, :method => :get, :id => 'profile_button', :class => "button" do
+        My Profile
+        %span(class="glyphicon glyphicon-star")
+    .inner
+      = button_to users_path, :method => :get, :id => 'search_button', :class => "button" do
+        Search Users
+        %span(class="glyphicon glyphicon-search")
+    .inner
+      = button_to logout_path , :method => :delete , :id => 'logout', :class => "button" do
+        Logout
+        %span(class="glyphicon glyphicon-log-out")
     #div{:class => "card"}
       #map{:style => "width:50; height:550px;"}
   -else
     %h2
-      = button_to 'Sign up/Login', login_path , :method => :get, :id => 'signuplogin', :class => "button" 
-
+      = button_to login_path , :method => :get, :id => 'signuplogin', :class => "button" do
+        Sign up/Login
+        %span(class="glyphicon glyphicon-log-in")
+  
