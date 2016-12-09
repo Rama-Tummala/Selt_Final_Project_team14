@@ -16,7 +16,9 @@ RSpec.describe RelationshipsController, type: :controller do
     end
 
     it "destroy should require logged-in user" do
+        expect(User).to receive(:find).and_return(john)
         assert_no_difference 'Relationship.count' do
+            delete :destroy, {:user_id => 20}
             delete relationship_path(relationships(:one))
         end
         assert_redirected_to login_url
